@@ -14,7 +14,7 @@ body {
 .column {
   float: left;
   padding: 10px;
-  height: 1000px; /*Should be removed. Only for demonstration*/
+  height: 1100px; /*Should be removed. Only for demonstration*/
 }
 
 .left {
@@ -365,6 +365,7 @@ span a {
   -ms-transform: scale(1.2); /* IE 9 */
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .card-grid img {
@@ -372,6 +373,32 @@ span a {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column-soc {
+  float: right;
+  width: 3%;
+  padding: 5px;
+}
+
+.column-soc img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Clear floats after image containers */
+.row-soc::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.fix-po {
+  position: fixed;
+  bottom: -15px;
 }
 
 @media (max-width: 600px) {
