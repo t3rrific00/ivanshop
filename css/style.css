@@ -45,7 +45,7 @@ h2 {
   background-color: #28363d;
 }
 
-.inner-header {
+.container {
   width: 80%;
   height: 100%;
   display: block;
@@ -103,8 +103,8 @@ h2 {
 }
 
 .slider {
-  width: 800px;
-  height: 500px;
+  width: 600px;
+  height: 350px;
   border-radius: 10px;
   overflow: hidden;
   display: block;
@@ -114,7 +114,7 @@ h2 {
 
 .slides {
   width: 500%;
-  height: 500px;
+  height: 350px;
   display: flex;
 }
 
@@ -128,24 +128,25 @@ h2 {
 }
 
 .slide img {
-  width: 800px;
-  height: 500px;
+  width: 600px;
+  height: 350px;
 }
 
 /*css for manual slide navigation*/
 
 .navigation-manual {
   position: absolute;
-  width: 800px;
+  width: 600px;
   margin-top: -40px;
   display: flex;
   justify-content: center;
 }
 
 .manual-btn {
-  border: 2px solid #40d3dc;
-  padding: 5px;
+  border: 2px solid #dee1dd;
+  padding: 3px;
   border-radius: 10px;
+  margin-top: 10px;
   cursor: pointer;
   transition: 1s;
 }
@@ -155,7 +156,7 @@ h2 {
 }
 
 .manual-btn:hover {
-  background: #40d3dc;
+  background: #dee1dd;
 }
 
 #radio1:checked ~ .first {
@@ -175,14 +176,14 @@ h2 {
 .navigation-auto {
   position: absolute;
   display: flex;
-  width: 800px;
+  width: 600px;
   justify-content: center;
-  margin-top: 460px;
+  margin-top: 320px;
 }
 
 .navigation-auto div {
-  border: 2px solid #40d3dc;
-  padding: 5px;
+  border: 2px solid #dee1dd;
+  padding: 3px;
   border-radius: 10px;
   transition: 1s;
 }
@@ -192,15 +193,15 @@ h2 {
 }
 
 #radio1:checked ~ .navigation-auto .auto-btn1 {
-  background: #40d3dc;
+  background: #dee1dd;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2 {
-  background: #40d3dc;
+  background: #dee1dd;
 }
 
 #radio3:checked ~ .navigation-auto .auto-btn3 {
-  background: #40d3dc;
+  background: #dee1dd;
 }
 
 .wrapper {
@@ -211,7 +212,7 @@ h2 {
 .wrapper .sidebar {
   width: 200px;
   height: 100%;
-  padding: 30px 0px;
+  padding: 10px 0px;
 }
 
 .wrapper .sidebar h2 {
@@ -239,7 +240,7 @@ h2 {
 }
 
 .wrapper .sidebar ul li:hover {
-  background-color: #99aead;
+  background-color: #99ae;
 }
 
 .wrapper .sidebar ul li:hover a {
@@ -254,7 +255,7 @@ h2 {
 }
 
 @media (max-width: 600px) {
-  .inner-header {
+  .container {
     width: 100%;
     float: none;
   }
