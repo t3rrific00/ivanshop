@@ -1,7 +1,6 @@
 var counter = 1;
 
 $(document).ready(function () {
-  
 
   $(".login-form").hide();
   $(".login").css("background", "none");
