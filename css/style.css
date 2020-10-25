@@ -1,3 +1,13 @@
+/* 
+  #dee1dd
+  #c4cdc1
+  #99aead
+  #6d9197
+  #658b6f
+  #2f575d
+  #28363d
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +24,6 @@ body {
 .column {
   float: left;
   padding: 10px;
-  height: 1100px; /*Should be removed. Only for demonstration*/
 }
 
 .left {
@@ -296,7 +305,7 @@ body {
   border: 2px solid #34b3a0;
 }
 
-.btn-form {
+.btn-right {
   width: 100%;
   background: #34b3a0;
   height: 40px;
@@ -423,7 +432,90 @@ body {
 }
 
 .fix-btn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+  background-color: #555;
+}
+
+.pagination-center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #34b3a0;
+  color: white;
+  border: 1px solid#34b3a0;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.contact-form {
+  width: 100%;
+  background: #2f575d;
+  top: 50%;
+  left: 50%;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contact-form {
+  margin-top: 0;
+  font-weight: 200;
+}
+
+.txtbox-contact {
+  border: 1px solid #dee1dd;
+  margin: 8px 0;
+  padding: 10px 10px;
+  border-radius: 8px;
+}
+
+.txtbox-contact label {
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+.txtbox-contact input,
+.txtbox-contact textarea {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin-top: 6px;
+  font-weight: normal;
+}
+
+.btn-bottom {
+  display: inline-block;
+  background: #99aead;
+  padding: 14px 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
 }
 
 @media (max-width: 600px) {

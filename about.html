@@ -17,14 +17,14 @@
             <ul class="navigation">
                 <a href="http://127.0.0.1:5500/index.html"><li>Home</li></a>
                 <a href="http://127.0.0.1:5500/about.html"><li style="color: #fff;">About</li></a>
-                <a><li>Products</li></a>
-                <a><li>Contact</li></a>
+                <a><li>Purchase</li></a>
+                <a onclick="bottomFunction()"><li>Contact</li></a>
             </ul>
         </div>
     </div> 
     <div class="container">
     <div class="row">
-      <div class="column left" style="background-color:#2f575d; margin: 10px 0;">
+      <div class="column left" style="background-color:#2f575d; padding-top: 0px; margin: 10px 0;">
         <div class="wrapper">
           <div class="sidebar">
               <ul>
@@ -38,7 +38,7 @@
           </div>
       </div>
       </div>
-      <div class="column middle" style="background-color:#fff; padding-top: 20px; margin: 10px 0;">
+      <div class="column middle" style="background-color:#fff; padding-top: 10px; margin: 10px 0;">
         <h1 style="color: #28363d;">Lorem</h1>
         <br>
         <p style="color: #28363d;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
@@ -47,8 +47,36 @@
         alias ipsum culpa nostrum distinctio, a repellat, omnis natus nulla 
         eligendi mollitia minima molestias aliquam repudiandae incidunt? Quos nobis architecto accusamus?</p>
         <div style="widows: auto; height: 500px; margin: 20px 0px 20px 0px; text-align: center;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.3562329967122!2d121.06095599835183!3d14.615448716450093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7d0dfbae791%3A0x702d19cc0bfceb6c!2sMurphy%20Public%20Market!5e0!3m2!1sen!2sph!4v1603518834346!5m2!1sen!2sph" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
-    </div>
-    <div class="column right" style="background-color:#dee1dd; padding-top: 20px; margin: 10px 0;">
+    
+        <hr style="height:5px;border-width:0;background-color:#28363d">
+        <br>
+    
+        <!--Start Contact Form-->
+        <div class="contact-form">
+        <h1 style="color: #fff;">Contact Us</h1>
+        <br>
+        <div class="txtbox-contact">
+          <label>Full Name:</label>
+          <input type="text" name="fullname">
+        </div>
+        <div class="txtbox-contact">
+          <label>Email:</label>
+          <input type="email" name="email">
+        </div>
+        <div class="txtbox-contact">
+          <label>Phone Number:</label>
+          <input type="text" name="phonenumber">
+        </div>
+        <div class="txtbox-contact">
+          <label>Message:</label>
+          <textarea></textarea>
+        </div>
+        <a class="btn-bottom">Send</a>
+        </div>
+        <!--End Contact Form-->
+    
+      </div>
+    <div class="column right" style="background-color:#dee1dd; padding-top: 10px; margin: 10px 0;">
       <div class="wrapper-login">
         <div class="container-login">
           <div class="login">Log In</div>
@@ -56,14 +84,14 @@
           <div class="login-form">
               <input type="text" class="input-form" placeholder="Username"><br />
               <input type="password" class="input-form" placeholder="Password"><br />
-              <div class="btn-form">Login</div>
+              <div class="btn-right">Login</div>
               <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
            </div>
            <div class="signup-form" hidden>
             <input type="text" class="input-form" placeholder="Email Address"><br />
             <input type="text" class="input-form" placeholder="Username"><br />
             <input type="password" class="input-form" placeholder="Password"><br />
-            <div class="btn-form">Create</div>
+            <div class="btn-right">Create</div>
          </div>
         </div>
       </div>

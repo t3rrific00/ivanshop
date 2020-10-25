@@ -17,14 +17,14 @@
             <ul class="navigation">
                 <a href="http://127.0.0.1:5500/index.html"><li style="color: #fff;">Home</li></a>
                 <a href="http://127.0.0.1:5500/about.html"><li>About</li></a>
-                <a><li>Products</li></a>
-                <a><li>Contact</li></a>
+                <a><li>Purchase</li></a>
+                <a onclick="bottomFunction()"><li>Contact</li></a>
             </ul>
         </div>
     </div> 
     <div class="container">
     <div class="row">
-      <div class="column left" style="background-color:#2f575d; margin: 10px 0;">
+      <div class="column left" style="background-color:#2f575d; padding-top: 0px; margin: 10px 0;">
         <div class="wrapper">
           <div class="sidebar">
               <ul>
@@ -38,7 +38,7 @@
           </div>
       </div>
       </div>
-      <div class="column middle" style="background-color:#fff; padding-top: 20px; margin: 10px 0;">
+      <div class="column middle" style="background-color:#fff; padding-top: 10px; margin: 10px 0;">
         <!--image slider start-->
         <div class="slider">
         <div class="slides">
@@ -251,9 +251,52 @@
         </div>
       </div>
     </div>
+    <br>
+    <!--Start Pagination-->
+    <div class="pagination-center">
+      <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="#">1</a>
+      <a href="#" class="active">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
+      </div>
+    </div>
+    <!--End Pagination-->
+    
+    <br>
+    <hr style="height:5px;border-width:0;background-color:#28363d">
+    <br>
+
+    <!--Start Contact Form-->
+    <div class="contact-form">
+    <h1 style="color: #fff;">Contact Us</h1>
+    <br>
+    <div class="txtbox-contact">
+      <label>Full Name:</label>
+      <input type="text" name="fullname">
+    </div>
+    <div class="txtbox-contact">
+      <label>Email:</label>
+      <input type="email" name="email">
+    </div>
+    <div class="txtbox-contact">
+      <label>Phone Number:</label>
+      <input type="text" name="phonenumber">
+    </div>
+    <div class="txtbox-contact">
+      <label>Message:</label>
+      <textarea></textarea>
+    </div>
+    <a class="btn-bottom">Send</a>
+    </div>
+    <!--End Contact Form-->
 
     </div>
-    <div class="column right" style="background-color:#dee1dd; padding-top: 20px; margin: 10px 0;">
+    <div class="column right" style="background-color:#dee1dd; padding-top: 10px; margin: 10px 0;">
       <div class="wrapper-login">
         <div class="container-login">
           <div class="login">Log In</div>
@@ -261,14 +304,14 @@
           <div class="login-form">
               <input type="text" class="input-form" placeholder="Username"><br />
               <input type="password" class="input-form" placeholder="Password"><br />
-              <div class="btn-form">Login</div>
+              <div class="btn-right">Login</div>
               <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
            </div>
            <div class="signup-form" hidden>
             <input type="text" class="input-form" placeholder="Email Address"><br />
             <input type="text" class="input-form" placeholder="Username"><br />
             <input type="password" class="input-form" placeholder="Password"><br />
-            <div class="btn-form">Create</div>
+            <div class="btn-right">Create</div>
          </div>
         </div>
       </div>
