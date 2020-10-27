@@ -30,14 +30,17 @@ label {
 
 .left {
   width: 15%;
+  border-radius: 5px;
 }
 
 .right {
   width: 25%;
+  border-radius: 5px;
 }
 
 .middle {
   width: 60%;
+  border-radius: 5px;
 }
 
 /* Clear floats after the columns */
@@ -51,7 +54,7 @@ label {
   width: 100%;
   height: 80px;
   display: block;
-  background-color: #28363d;
+  background-color: #0f5298;
 }
 
 .container {
@@ -68,7 +71,7 @@ label {
 }
 
 .logo-container h1 {
-  color: #dee1dd;
+  color: #d5f3fe;
   height: 100%;
   display: table-cell;
   vertical-align: middle;
@@ -101,7 +104,7 @@ label {
   display: table-cell;
   vertical-align: middle;
   height: 100%;
-  color: #658b6f;
+  color: #3c99dc;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   cursor: pointer;
@@ -114,6 +117,7 @@ label {
 .slider {
   width: 600px;
   height: 350px;
+  border-radius: 5px;
   overflow: hidden;
   display: block;
   margin-left: auto;
@@ -151,7 +155,7 @@ label {
 }
 
 .manual-btn {
-  border: 2px solid #dee1dd;
+  border: 2px solid #d5f3fe;
   padding: 3px;
   border-radius: 10px;
   margin-top: 10px;
@@ -164,7 +168,7 @@ label {
 }
 
 .manual-btn:hover {
-  background: #dee1dd;
+  background: #d5f3fe;
 }
 
 #radio1:checked ~ .first {
@@ -190,9 +194,9 @@ label {
 }
 
 .navigation-auto div {
-  border: 2px solid #dee1dd;
+  border: 2px solid #d5f3fe;
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: 1s;
 }
 
@@ -201,15 +205,15 @@ label {
 }
 
 #radio1:checked ~ .navigation-auto .auto-btn1 {
-  background: #dee1dd;
+  background: #d5f3fe;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2 {
-  background: #dee1dd;
+  background: #d5f3fe;
 }
 
 #radio3:checked ~ .navigation-auto .auto-btn3 {
-  background: #dee1dd;
+  background: #d5f3fe;
 }
 
 .wrapper {
@@ -247,15 +251,15 @@ label {
 }
 
 .wrapper .sidebar ul li:hover {
-  background-color: #99ae;
+  background-color: #d5f3fe;
 }
 
 .wrapper .sidebar ul li:hover a {
-  color: #fff;
+  color: #2565ae;
 }
 
 #main-footer {
-  background: #28363d;
+  background: #0f5298;
   font-family: "Times New Roman", Times, serif;
   color: #fff;
   text-align: center;
@@ -265,7 +269,8 @@ label {
 .signup,
 .login {
   width: 50%;
-  background: #2f575d;
+  background: #2565ae;
+  border-radius: 5px 5px 0 0;
   float: left;
   color: #fff;
   height: 60px;
@@ -273,14 +278,14 @@ label {
   line-height: 60px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: bolder;
   cursor: pointer;
 }
 
 .login-form,
 .signup-form {
-  border-radius: 0px 0px 10px 10px;
-  background: #2f575d;
+  border-radius: 0px 0px 5px 5px;
+  background: #2565ae;
   padding: 40px;
   clear: both;
   width: 100%;
@@ -291,11 +296,11 @@ label {
 .input-form {
   width: 100%;
   height: 30px;
-  padding: 5px;
-  box-sizing: border-box;
+  padding: 10px;
   margin-bottom: 25px;
-  border: 2px solid #e9eaea;
-  color: #3e3e40;
+  border-radius: 5px;
+  border: 2px solid #d5f3fe;
+  color: #242424;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   outline: none;
@@ -303,20 +308,21 @@ label {
 }
 
 .input-form:focus {
-  border: 2px solid #34b3a0;
+  border: 2px solid #d5f3fe;
 }
 
 .btn-right {
   width: 100%;
-  background: #34b3a0;
+  background: #d5f3fe;
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  border-radius: 5px;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: bolder;
   line-height: 40px;
   text-transform: uppercase;
-  color: #fff;
+  color: #3c99dc;
   letter-spacing: 1px;
   cursor: pointer;
   margin-bottom: 30px;
@@ -330,8 +336,8 @@ label {
 
 .forgot-form a {
   text-decoration: none;
-  font-weight: bold;
-  color: #658b6f;
+  font-weight: bolder;
+  color: #fff;
 }
 
 /* Float four columns side by side */
@@ -362,7 +368,7 @@ label {
 
 .card-grid h3 {
   font-size: 10px;
-  font-weight: bold;
+  font-weight: bolder;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -370,7 +376,7 @@ label {
 
 .card-grid p {
   font-size: 10px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .card-grid:hover {
@@ -384,6 +390,7 @@ label {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
   width: 100%;
 }
 
@@ -420,11 +427,11 @@ label {
   position: fixed;
   bottom: 20px;
   right: 10px;
-  font-weight: bold;
+  font-weight: bolder;
   border: none;
   outline: none;
-  background-color: #6d9197;
-  color: #fff;
+  background: #d5f3fe;
+  color: #3c99dc;
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
@@ -434,7 +441,7 @@ label {
 }
 
 .fix-btn:hover {
-  background-color: #555;
+  background-color: #fff;
 }
 
 .pagination-center {
@@ -446,7 +453,7 @@ label {
 }
 
 .pagination a {
-  color: black;
+  color: #0f5298;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
@@ -456,9 +463,9 @@ label {
 }
 
 .pagination a.active {
-  background-color: #34b3a0;
-  color: white;
-  border: 1px solid#34b3a0;
+  background-color: #d5f3fe;
+  color: #0f5298;
+  border: 1px solid#d5f3fe;
 }
 
 .pagination a:hover:not(.active) {
@@ -469,13 +476,13 @@ label {
 
 .contact-form {
   width: 100%;
-  background: #2f575d;
+  background: #2565ae;
   top: 50%;
   left: 50%;
   padding: 30px 40px;
   box-sizing: border-box;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .contact-form {
@@ -484,10 +491,10 @@ label {
 }
 
 .txtbox-contact {
-  border: 1px solid #dee1dd;
+  border: 1px solid #d5f3fe;
   margin: 8px 0;
   padding: 10px 10px;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .txtbox-contact label {
@@ -513,9 +520,10 @@ label {
 
 .btn-bottom {
   display: inline-block;
-  background: #99aead;
+  background: #d5f3fe;
   padding: 14px 0;
-  color: #fff;
+  border-radius: 5px;
+  color: #3c99dc;
   text-transform: uppercase;
   cursor: pointer;
   margin-top: 8px;
@@ -549,9 +557,9 @@ label {
 
 .modal label {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: bolder;
   margin: 0 0 0 20px;
-  color: #28363d;
+  color: #242424;
 }
 
 .modal-header {
@@ -563,8 +571,8 @@ label {
 
 .modal-header .title {
   font-size: 1.1rem;
-  font-weight: bold;
-  color: #28363d;
+  font-weight: bolder;
+  color: #242424;
 }
 
 .modal-header .close-button {
@@ -573,14 +581,14 @@ label {
   outline: none;
   background: none;
   font-size: 1.25rem;
-  color: #28363d;
-  font-weight: bold;
+  color: #242424;
+  font-weight: bolder;
   margin-left: 10px;
 }
 
 .modal-body {
   padding: 10px 15px;
-  color: #28363d;
+  color: #242424;
 }
 
 .modal-body img {
@@ -589,6 +597,7 @@ label {
   margin-right: auto;
   width: 500px;
   max-height: 500px;
+  border-radius: 5px;
   transition: transform 0.2s;
 }
 
@@ -606,16 +615,17 @@ label {
 
 .modal-body button {
   width: 100%;
-  background: #34b3a0;
+  background: #d5f3fe;
   /* background: #2f575d; */
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  border-radius: 5px;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: bolder;
   line-height: 40px;
   text-transform: uppercase;
-  color: #fff;
+  color: #3c99dc;
   letter-spacing: 1px;
   cursor: pointer;
 }
@@ -646,38 +656,23 @@ label {
 }
 
 .search-box input[type="text"] {
-  width: 75%;
-  height: 30px;
-  padding: 5px;
-  border: 2px solid #e9eaea;
+  width: 88%;
+  height: 35px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1.5px solid #2565ae;
   margin-bottom: 10px;
-  color: #3e3e40;
+  color: #242424;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   float: left;
 }
 
-.search-box button {
-  width: 15%;
-  margin-left: 1%;
-  background: #34b3a0;
-  height: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  font-size: 10px;
-  vertical-align: top;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
 .search-box img {
-  width: 7.6%;
-  height: 30px;
-  margin-left: 0.5%;
+  width: 5%;
+  height: 35px;
+  border-radius: 5px;
   cursor: pointer;
 }
 

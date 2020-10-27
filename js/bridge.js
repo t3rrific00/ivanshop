@@ -12,14 +12,14 @@ $(document).ready(function () {
     $(".signup-form").hide();
     $(".login-form").show();
     $(".signup").css("background", "none");
-    $(".login").css("background", "#2f575d");
+    $(".login").css("background", "#2565ae");
   });
 
   $(".signup").click(function () {
     $(".signup-form").show();
     $(".login-form").hide();
     $(".login").css("background", "none");
-    $(".signup").css("background", "#2f575d");
+    $(".signup").css("background", "#2565ae");
   });
 
   $(".btn").click(function () {
