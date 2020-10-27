@@ -253,9 +253,6 @@ body {
 }
 
 #main-footer {
-  clear: both;
-  box-sizing: border-box;
-  margin-top: -200px;
   background: #28363d;
   font-family: "Times New Roman", Times, serif;
   color: #fff;
@@ -527,17 +524,18 @@ body {
 /** View Detail - Modal **/
 
 .modal {
+  font-family: Arial, Helvetica, sans-serif;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 1px solid #6d9197;
+  border-radius: 5px;
   z-index: 10;
   background-color: white;
-  width: 500px;
-  max-width: 80%;
+  max-width: 40%;
+  max-height: 80%;
 }
 
 .modal.active {
@@ -549,12 +547,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #6d9197;
 }
 
 .modal-header .title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #28363d;
 }
 
 .modal-header .close-button {
@@ -563,11 +562,29 @@ body {
   outline: none;
   background: none;
   font-size: 1.25rem;
+  color: #28363d;
   font-weight: bold;
+  margin-left: 5px;
 }
 
 .modal-body {
   padding: 10px 15px;
+  color: #28363d;
+}
+
+.modal-body img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  max-height: 500px;
+  transition: transform 0.2s;
+}
+
+.modal-body img:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
 }
 
 #overlay {
