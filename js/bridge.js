@@ -8,9 +8,6 @@ window.onscroll = function() {scrollFunction()};
 
 $(document).ready(function () {
 
-  // $(".signup-form").hide();
-  // $(".signup").css("background", "none");
-
   $(".login").click(function () {
     $(".signup-form").hide();
     $(".login-form").show();
@@ -29,7 +26,40 @@ $(document).ready(function () {
     $(".input").val("");
   });
 
+  document.querySelectorAll('[data-modal-target]').forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(button.dataset.modalTarget)
+      openModal(modal)
+    })
+  })
+  
+  document.getElementById('overlay').addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal => {
+      closeModal(modal)
+    })
+  })
+  
+  document.querySelectorAll('[data-close-button]').forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal')
+      closeModal(modal)
+    })
+  })
+
 });
+
+function openModal(modal) {
+  if (modal == null) return
+  modal.classList.add('active')
+  document.getElementById('overlay').classList.add('active')
+}
+
+function closeModal(modal) {
+  if (modal == null) return
+  modal.classList.remove('active')
+  document.getElementById('overlay').classList.remove('active')
+}
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
