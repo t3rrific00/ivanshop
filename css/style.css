@@ -80,8 +80,21 @@ label {
   font-weight: 200;
 }
 
+.logo-container h1 a {
+  width: 10%;
+  color: #d5f3fe;
+}
+
 .logo-container h1 span {
+  width: 10%;
   font-weight: 800;
+}
+
+.logo-container h1 img {
+  margin-right: 10px;
+  vertical-align: middle;
+  height: 50px;
+  width: 50px;
 }
 
 .navigation {
