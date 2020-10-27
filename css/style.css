@@ -17,7 +17,8 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
