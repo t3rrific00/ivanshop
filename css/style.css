@@ -464,7 +464,7 @@ body {
   background-color: #ddd;
 }
 
-/** Contact Us **/
+/** Start Contact Us **/
 
 .contact-form {
   width: 100%;
@@ -521,9 +521,9 @@ body {
   width: 100%;
 }
 
-/** Contact Us **/
+/** End Contact Us **/
 
-/** View Detail - Modal **/
+/** Start View Detail - Modal **/
 
 .modal {
   font-family: Arial, Helvetica, sans-serif;
@@ -635,7 +635,7 @@ body {
   pointer-events: all;
 }
 
-/** View Detail - Modal **/
+/** End View Detail - Modal **/
 
 @media (max-width: 600px) {
   .container {
