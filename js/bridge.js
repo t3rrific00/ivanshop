@@ -75,11 +75,6 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-// When the user clicks on the button, scroll to the bottom of the document
-function bottomFunction() {
-  window.scrollTo(0,document.body.scrollHeight);
-}
-
 setInterval(function () {
   document.getElementById("radio" + counter).checked = true;
   counter++;
