@@ -253,6 +253,9 @@ body {
 }
 
 #main-footer {
+  clear: both;
+  box-sizing: border-box;
+  margin-top: -200px;
   background: #28363d;
   font-family: "Times New Roman", Times, serif;
   color: #fff;
