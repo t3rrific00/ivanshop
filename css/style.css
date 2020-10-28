@@ -365,6 +365,11 @@ label {
   height: 520px;
 }
 
+.signup-form label,
+.middle-form label {
+  color: #fff;
+}
+
 .input-form {
   width: 100%;
   height: 30px;
@@ -561,7 +566,7 @@ label {
 
 /** Start Contact Us **/
 
-.contact-form {
+.middle-form {
   width: 100%;
   background: #2565ae;
   top: 50%;
@@ -572,9 +577,11 @@ label {
   border-radius: 5px;
 }
 
-.contact-form {
+.middle-form {
   margin-top: 0;
   font-weight: 200;
+  text-align: left;
+  color: #fff;
 }
 
 .txtbox-contact {
