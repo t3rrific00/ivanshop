@@ -323,7 +323,7 @@ label {
   border-radius: 5px;
   border: 2px solid #d5f3fe;
   color: #242424;
-  font-size: 12px;
+  font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   outline: none;
   transform: all 0.5s ease;
@@ -333,16 +333,31 @@ label {
   border: 2px solid #d5f3fe;
 }
 
-.btn-right {
+.btn-submit {
   width: 100%;
   background: #d5f3fe;
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   border-radius: 5px;
-  font-size: 10px;
-  font-weight: bolder;
-  line-height: 40px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3c99dc;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-send {
+  width: 100%;
+  background: #d5f3fe;
+  height: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
   text-transform: uppercase;
   color: #3c99dc;
   letter-spacing: 1px;
@@ -538,19 +553,6 @@ label {
   font-size: 16px;
   margin-top: 6px;
   font-weight: normal;
-}
-
-.btn-bottom {
-  display: inline-block;
-  background: #d5f3fe;
-  padding: 14px 0;
-  border-radius: 5px;
-  color: #3c99dc;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 8px;
-  font-size: 14px;
-  width: 100%;
 }
 
 /** End Contact Us **/
@@ -823,6 +825,7 @@ input[type="radio"]:checked:before {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
+  font-size: 14px;
   background-color: #fff;
   padding: 3px 5px;
   height: 30px;
