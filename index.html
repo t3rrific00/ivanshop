@@ -300,11 +300,24 @@
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
       
       <!-- Start User Logged In-->
-
+      <label 
+        style="display: block; width: 250px; font-size: 14px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> <!--display: none - hides label-->
+        Noah Tulod's Account
+      </label>
+      <div class="wrapper-sidebar-right">
+        <div class="sidebar"> <!--can be hidden-->
+            <ul>
+                <li><a href="http://127.0.0.1:5500/myaccount.html"><i class="fas fa-home"></i>Manage My Account</a></li>
+                <li><a href="#"><i class="fas fa-home"></i>My Orders</a></li>
+                <li><a href="#"><i class="fas fa-user"></i>My Returns & Cancellations</a></li>
+                <li><a href="#"><i class="fas fa-address-card"></i>Logout</a></li>
+            </ul> 
+        </div>
+      </div>
       <!-- End User Logged In-->
       
       <!-- Start Login / Sign Up Form -->
-      <div class="wrapper-login"> <!--can be hidden-->
+      <div class="wrapper-login" hidden> <!--can be hidden-->
         <div class="container-login">
           <div class="login">Log In</div>
           <div class="signup" style="background: none;">Sign Up</div>
@@ -315,10 +328,10 @@
               <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
               <br>
               <br>
-              <a href="" class="fb fb-connect">Facebook</a>
-              <a href="" class="g g-connect">Google</a>
+              <a href="#" class="fb fb-connect">Facebook</a>
+              <a href="#" class="g g-connect">Google</a>
            </div>
-           <div class="signup-form"> <!--can be hidden-->
+           <div class="signup-form" hidden> <!--Don't touch hidden-->
             <input type="text" class="input-form" placeholder="Full Name"><br>
             <input type="text" class="input-form" placeholder="Phone Number"><br>
             <input type="password" class="input-form" placeholder="Password"><br>
