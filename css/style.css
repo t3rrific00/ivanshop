@@ -370,6 +370,8 @@ label {
   color: #fff;
 }
 
+/** Input **/
+
 .input-form {
   width: 100%;
   height: 30px;
@@ -384,9 +386,25 @@ label {
   transform: all 0.5s ease;
 }
 
-.input-form:focus {
+/** Input **/
+
+/** Drop Down **/
+
+.dropdown-form {
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
   border: 2px solid #d5f3fe;
+  color: #242424;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  transform: all 0.5s ease;
 }
+
+/** Drop Down **/
 
 .btn-submit {
   width: 100%;
@@ -876,7 +894,7 @@ input[type="radio"]:checked:before {
   opacity: 0;
 }
 
-.signup-form #birthday {
+#birthdate {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
