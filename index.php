@@ -1,14 +1,13 @@
 <?php
 
-// if (!isset($_SESSION)) {
-//   session_start();
-// }
+if (!isset($_SESSION)) {
+  session_start();
+}
 
 include_once("connections/connection.php");
-
 $con = connection();
 
-if (isset($_POST['submit'])) {
+if(isset($_POST['signup'])){
 
   $uname = $_POST['username'];
   $pass = $_POST['password'];
@@ -21,6 +20,26 @@ if (isset($_POST['submit'])) {
   $con->query($sql) or die ($con->error);
 
   echo header("Location: index.php");
+
+}
+
+if(isset($_POST['login'])){
+
+  $uname = $_POST['username'];
+  $pass = $_POST['password'];
+
+  $sql = "SELECT * FROM users WHERE username = '$uname' AND password = '$pass'";
+  $user = $con->query($sql) or die ($con->error);
+  $row = $user->fetch_assoc();
+  $total = $user->num_rows;
+
+  if ($total > 0) {
+      $_SESSION['UserLogin'] = $row['username'];
+      $_SESSION['Access'] = $row['access'];
+      echo header("Location: index.php");
+  } else {
+      echo "No user found.";
+  }
 
 }
 
@@ -357,9 +376,9 @@ if (isset($_POST['submit'])) {
           <div class="login">Log In</div>
           <div class="signup" style="background: none;">Sign Up</div>
           <form class="login-form">
-              <input type="text" class="input-form" placeholder="Username"><br>
-              <input type="password" class="input-form" placeholder="Password"><br>
-              <button class="btn-submit">Login</button>
+              <input type="text" name="username" class="input-form" placeholder="Username"><br>
+              <input type="password" name="password" class="input-form" placeholder="Password"><br>
+              <button type="submit" name="login" class="btn-submit">Login</button>
               <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
               <br>
               <br>
@@ -380,7 +399,7 @@ if (isset($_POST['submit'])) {
             <label for="female">Female</label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label><br><br>
-            <button type="submit" name="submit" class="btn-submit">Create</button><br><br>
+            <button type="submit" name="signup" class="btn-submit">Create</button><br><br>
             <a href="#" class="fb fb-connect">Facebook</a>
             <a href="#" class="g g-connect">Google</a>
          </form>
