@@ -79,7 +79,7 @@ if(isset($_POST['login'])){
     <div class="header">
         <div class="container">
             <div class="logo-container">
-              <h1><a href="index.html"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
+              <h1><a href="index.php"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
             </div>
             <ul class="navigation">
                 <a href="aboutus.html"><li>About Us</li></a>
