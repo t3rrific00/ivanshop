@@ -251,11 +251,10 @@ label {
 
 .wrapper-sidebar-left .sidebar ul li a {
   color: #fff;
-  display: block;
 }
 
 .wrapper-sidebar-left .sidebar ul li a .fas {
-  width: 25px;
+  width: 100%;
 }
 
 .wrapper-sidebar-left .sidebar ul li:hover {
@@ -338,7 +337,7 @@ label {
   clear: both;
   width: 100%;
   box-sizing: border-box;
-  height: 320px;
+  height: 100%;
 }
 
 .signup-form {
@@ -348,7 +347,7 @@ label {
   clear: both;
   width: 100%;
   box-sizing: border-box;
-  height: 560px;
+  height: 100%;
 }
 
 .signup-form label,
@@ -777,7 +776,8 @@ label {
   display: inline-block;
   font-size: 10px;
   text-transform: uppercase;
-  padding: 13px 30px 15px 80px;
+  padding: 15px;
+  text-align: center;
   background: #3c66c4;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 20, 0.4);
@@ -814,7 +814,8 @@ label {
   display: inline-block;
   font-size: 10px;
   text-transform: uppercase;
-  padding: 13px 30px 15px 80px;
+  padding: 15px;
+  text-align: center;
   background: #fff;
   color: #7b7b7b;
   text-shadow: 0 -1px 0 rgba(0, 0, 20, 0.4);

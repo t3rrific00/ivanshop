@@ -394,11 +394,12 @@ if(isset($_POST['login'])){
               <input type="text" name="username" class="input-form" placeholder="Username"><br>
               <input type="password" name="password" class="input-form" placeholder="Password"><br>
               <button type="submit" name="login" class="btn-submit">Login</button>
-              <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
-              <br>
-              <br>
-              <a href="#" class="fb fb-connect">Facebook</a>
-              <a href="#" class="g g-connect">Google</a>
+              <span class="forgot-form"">Forgot your password? <a href="#">Click here</a></span>
+              <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 20px;">
+              <span class="forgot-form" style="vertical-align: top;">Log in via social media</span><br>
+              <a href="#"><img src="img/fb.webp" width="40px" style="margin-right: 5px;"></a>
+              <a href="#"><img src="img/g.webp" width="40px"></a>
+              </div>
            </form>
            <form class="signup-form" method="post" hidden> <!--Don't touch hidden-->
             <input type="text" name="username" class="input-form" placeholder="Username"><br>
@@ -414,9 +415,12 @@ if(isset($_POST['login'])){
             <label for="female">Female</label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label><br><br>
-            <button type="submit" name="signup" class="btn-submit">Create</button><br><br>
-            <a href="#" class="fb fb-connect">Facebook</a>
-            <a href="#" class="g g-connect">Google</a>
+            <button type="submit" name="signup" class="btn-submit">Create</button>
+              <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 15px;">
+              <span class="forgot-form" style="vertical-align: top;">Sign up via social media</span><br>
+              <a href="#"><img src="img/fb.webp" width="40px" style="margin-right: 5px;"></a>
+              <a href="#"><img src="img/g.webp" width="40px"></a>
+              </div>
          </form>
         </div>
       </div>
