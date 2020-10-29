@@ -35,16 +35,14 @@ if(isset($_POST['login'])){
 
   if ($total > 0) {
       $_SESSION['UserLogin'] = $row['username'];
-      $_SESSION['Access'] = $row['access'];
-      echo header("Location: index.php");
+      // echo header("Location: index.php");
   } else {
-      echo "No user found.";
+      // echo "No user found.";
   }
 
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,11 +79,11 @@ if(isset($_POST['login'])){
     <div class="header">
         <div class="container">
             <div class="logo-container">
-              <h1><a href="http://127.0.0.1:5500/index.html"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
+              <h1><a href="index.html"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
             </div>
             <ul class="navigation">
-                <a href="http://127.0.0.1:5500/aboutus.html"><li>About Us</li></a>
-                <a href="http://127.0.0.1:5500/contactus.html"><li>Contact Us</li></a>
+                <a href="aboutus.html"><li>About Us</li></a>
+                <a href="contactus.html"><li>Contact Us</li></a>
             </ul>
         </div>
     </div>
@@ -347,35 +345,52 @@ if(isset($_POST['login'])){
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
       
       <!-- Start User Logged In-->
-      <label 
-        style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;"> <!--display: none - hides label-->
+
+      <?php if(isset($_SESSION['UserLogin'])){ ?>
+        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px;"> <!--display: none - hides label-->
+      <?php }else{ ?>
+        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;"> <!--display: none - hides label-->
+      <?php } ?>
         Welcome
       </label>
-      <label 
-        style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: none;"> <!--display: none - hides label-->
-        Noah
+      <?php if(isset($_SESSION['UserLogin'])){ ?>
+        <label style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> <!--display: none - hides label-->
+      <?php }else{ ?>
+        <label style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:none;"> <!--display: none - hides label-->
+      <?php } ?>
+      <?php if(isset($_SESSION['UserLogin'])){ ?>
+        <?php echo $_SESSION['UserLogin']; ?>
+      <?php } ?>
       </label>
       <div class="wrapper-sidebar-right">
+      <?php if(isset($_SESSION['UserLogin'])){ ?>
+        <div class="sidebar"> <!--can be hidden-->
+      <?php }else{ ?>
         <div class="sidebar" hidden> <!--can be hidden-->
+      <?php } ?>
             <ul>
-                <li><a href="http://127.0.0.1:5500/myprofile.html"><i class="fas fa-home"></i>Manage My Account</a></li>
+                <li><a href="myprofile.html"><i class="fas fa-home"></i>Manage My Account</a></li>
                 <li><a href="#"><i class="fas fa-home"></i>My Orders</a></li>
                 <!-- <ul> Returns &d Cancellation
                   <li style="padding-left: 20px; font-size: 14px;"><a href="#"><i class="fas fa-home"></i>Returns</a></li>
                   <li style="padding-left: 20px; font-size: 14px;"><a href="#"><i class="fas fa-home"></i>Cancellations</a></li>
                 </ul> -->
-                <li><a href="#"><i class="fas fa-address-card"></i>Logout</a></li>
+                <li><a href="logout.php"><i class="fas fa-address-card"></i>Logout</a></li>
             </ul> 
         </div>
       </div>
       <!-- End User Logged In-->
       
       <!-- Start Login / Sign Up Form -->
-      <div class="wrapper-login"> <!--can be hidden-->
+      <?php if(isset($_SESSION['UserLogin'])){ ?>
+        <div class="wrapper-login" hidden> <!--can be hidden-->
+      <?php }else{ ?>
+        <div class="wrapper-login"> <!--can be hidden-->
+      <?php } ?>
         <div class="container-login">
           <div class="login">Log In</div>
           <div class="signup" style="background: none;">Sign Up</div>
-          <form class="login-form">
+          <form class="login-form" method="post">
               <input type="text" name="username" class="input-form" placeholder="Username"><br>
               <input type="password" name="password" class="input-form" placeholder="Password"><br>
               <button type="submit" name="login" class="btn-submit">Login</button>

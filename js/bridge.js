@@ -26,10 +26,6 @@ $(document).ready(function () {
     $(".input").val("");
   });
 
-  // $("#prospects_form").submit(function(e) {
-  //   e.preventDefault();
-  // });
-
   document.querySelectorAll('[data-modal-target]').forEach(button => {
     button.addEventListener('click', () => {
       const modal = document.querySelector(button.dataset.modalTarget)
