@@ -1,3 +1,31 @@
+<?php
+
+// if (!isset($_SESSION)) {
+//   session_start();
+// }
+
+include_once("connections/connection.php");
+
+$con = connection();
+
+if (isset($_POST['submit'])) {
+
+  $uname = $_POST['username'];
+  $pass = $_POST['password'];
+  $fname = $_POST['fullname'];
+  $pnumber = $_POST['phonenumber'];
+  $bdate = $_POST['birthdate'];
+  $gender = $_POST['gender'];
+
+  $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$pnumber', '$bdate', '$gender')";
+  $con->query($sql) or die ($con->error);
+
+  echo header("Location: index.php");
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,15 +329,15 @@
       
       <!-- Start User Logged In-->
       <label 
-        style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px;"> <!--display: none - hides label-->
+        style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;"> <!--display: none - hides label-->
         Welcome
       </label>
       <label 
-        style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> <!--display: none - hides label-->
+        style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: none;"> <!--display: none - hides label-->
         Noah
       </label>
       <div class="wrapper-sidebar-right">
-        <div class="sidebar"> <!--can be hidden-->
+        <div class="sidebar" hidden> <!--can be hidden-->
             <ul>
                 <li><a href="http://127.0.0.1:5500/myprofile.html"><i class="fas fa-home"></i>Manage My Account</a></li>
                 <li><a href="#"><i class="fas fa-home"></i>My Orders</a></li>
@@ -324,11 +352,11 @@
       <!-- End User Logged In-->
       
       <!-- Start Login / Sign Up Form -->
-      <div class="wrapper-login" hidden> <!--can be hidden-->
+      <div class="wrapper-login"> <!--can be hidden-->
         <div class="container-login">
           <div class="login">Log In</div>
           <div class="signup" style="background: none;">Sign Up</div>
-          <div class="login-form">
+          <form class="login-form">
               <input type="text" class="input-form" placeholder="Username"><br>
               <input type="password" class="input-form" placeholder="Password"><br>
               <button class="btn-submit">Login</button>
@@ -337,11 +365,12 @@
               <br>
               <a href="#" class="fb fb-connect">Facebook</a>
               <a href="#" class="g g-connect">Google</a>
-           </div>
-           <div class="signup-form" hidden> <!--Don't touch hidden-->
-            <input type="text" class="input-form" placeholder="Full Name"><br>
-            <input type="text" class="input-form" placeholder="Phone Number"><br>
-            <input type="password" class="input-form" placeholder="Password"><br>
+           </form>
+           <form class="signup-form" method="post" hidden> <!--Don't touch hidden-->
+            <input type="text" name="username" class="input-form" placeholder="Username"><br>
+            <input type="password" name="password" class="input-form" placeholder="Password"><br>
+            <input type="text" name="fullname" class="input-form" placeholder="Full Name"><br>
+            <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number"><br>
             <label for="birthdate">Birthdate</label><br>
             <input type="date" id="birthdate" name="birthdate"><br><br>
             <label for="gender">Gender</label><br>
@@ -351,10 +380,10 @@
             <label for="female">Female</label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label><br><br>
-            <button class="btn-submit">Create</button><br><br>
+            <button type="submit" name="submit" class="btn-submit">Create</button><br><br>
             <a href="#" class="fb fb-connect">Facebook</a>
             <a href="#" class="g g-connect">Google</a>
-         </div>
+         </form>
         </div>
       </div>
       <!-- End Login / Sign Up Form -->
