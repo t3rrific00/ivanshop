@@ -1,16 +1,6 @@
 <?php
 
-if (!isset($_SESSION)) {
-  session_start();
-}
 
-include_once("connections/connection.php");
-$con = connection();
-$id = $_SESSION['ID'];
-
-$sql = "SELECT * FROM users WHERE id = '$id'";
-$user = $con->query($sql) or die ($con->error);
-$row = $user->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
@@ -80,12 +70,13 @@ $row = $user->fetch_assoc();
           class="column middle"
           style="background-color: #fff; padding-top: 10px"
         >
-          <!--Start My Profile Form-->
+          <!--Start Edit Profile Form-->
           <div class="middle-form">
             <label
               style="
                 font-weight: bold;
-                width: 50%;
+                width: 49%;
+                margin-right: 1%;
                 float: left;
                 text-align: left;
               "
@@ -93,24 +84,34 @@ $row = $user->fetch_assoc();
             ><label
               style="
                 font-weight: bold;
-                width: 50%;
+                width: 49%;
+                margin-left: 1%;
                 float: left;
                 text-align: left;
               "
               >Email Address:</label
             ><br /><br />
-            <label
-              style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['full_name'];?></label
-            ><label
-              name="emailaddress"
-              style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['email_address'];?></label
-            ><br /><br />
+            <input
+              type="text"
+              class="input-form"
+              name="fullname"
+              style="
+                width: 49%;
+                margin-right: 1%;
+                float: left;
+                text-align: left;
+              "
+            /><input
+              type="text"
+              class="input-form"
+              name="fullname"
+              style="width: 49%; margin-left: 1%; float: left; text-align: left"
+            /><br /><br />
             <label
               style="
                 font-weight: bold;
-                width: 50%;
+                width: 49%;
+                margin-right: 1%;
                 float: left;
                 text-align: left;
               "
@@ -118,37 +119,62 @@ $row = $user->fetch_assoc();
             ><label
               style="
                 font-weight: bold;
-                width: 50%;
+                width: 49%;
+                margin-left: 1%;
                 float: left;
                 text-align: left;
               "
               >Gender:</label
             ><br /><br />
-            <label
+            <input
+              type="date"
+              id="birthdate"
               name="birthdate"
-              style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['birth_date'];?></label
-            ><label
+              style="
+                width: 49%;
+                margin-right: 1%;
+                float: left;
+                text-align: left;
+              "
+            />
+            <select
+              class="dropdown-form"
               name="gender"
-              style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['gender'];?></label
+              id="gender"
+              style="width: 49%; margin-left: 1%; float: left; text-align: left"
+            >
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option></select
             ><br /><br />
             <label
               style="
                 font-weight: bold;
-                width: 50%;
+                width: 49%;
+                margin-right: 1%;
                 float: left;
                 text-align: left;
               "
-              >Phone Number:</label
+              >Mobile:</label
             ><br /><br />
-            <label
-              name="phonenumber"
-              style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['phone_number'];?></label
-            ><br />
+            <input
+              type="text"
+              class="input-form"
+              name="fullname"
+              style="
+                width: 49%;
+                margin-right: 1%;
+                float: left;
+                text-align: left;
+              "
+            /><br /><br /><br />
+            <button class="btn-submit" style="width: 49%; margin-right: 1%">
+              Save</button
+            ><button class="btn-submit" style="width: 49%; margin-left: 1%">
+              Cancel
+            </button>
           </div>
-          <!--End My Profile Form-->
+          <!--End Edit Profile Form-->
         </div>
         <div
           class="column right"
@@ -159,9 +185,7 @@ $row = $user->fetch_assoc();
             <!--display: none - hides label-->
             Welcome
           </label>
-          
-          <?php if(isset($_SESSION['FULLNAME'])){ ?>
-            <label
+          <label
             style="
               display: block;
               width: 250px;
@@ -175,12 +199,12 @@ $row = $user->fetch_assoc();
               text-overflow: ellipsis;
             "
           >
-            <?php echo $row['full_name']; ?>
+            <!--display: none - hides label-->
+            Noah
           </label>
-          <?php } ?>
-
           <div class="wrapper-sidebar-right">
             <div class="sidebar">
+              <!--can be hidden-->
               <ul>
                 <li>
                   <a href="myprofile.php"
@@ -188,20 +212,20 @@ $row = $user->fetch_assoc();
                   >
                 </li>
                 <ul>
-                  <li
-                    style="
-                      padding-left: 20px;
-                      font-size: 14px;
-                      background-color: #66d3fa;
-                    "
-                  >
-                    <a href="myprofile.php" style="color: #242424"
+                  <li style="padding-left: 20px; font-size: 14px">
+                    <a href="myprofile.php"
                       ><i class="fas fa-home"></i>My Profile</a
                     >
                   </li>
                   <ul>
-                    <li style="padding-left: 40px; font-size: 12px">
-                      <a href="editprofile.php"
+                    <li
+                      style="
+                        padding-left: 40px;
+                        font-size: 12px;
+                        background-color: #66d3fa;
+                      "
+                    >
+                      <a href="editprofile.html" style="color: #242424"
                         ><i class="fas fa-home"></i>Edit Profile</a
                       >
                     </li>
