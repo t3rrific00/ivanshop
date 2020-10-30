@@ -1,6 +1,17 @@
 <?php
 
+if (!isset($_SESSION)) {
+  session_start();
+}
 
+include_once("connections/connection.php");
+$con = connection();
+$id = $_SESSION['ID'];
+$fname = $_SESSION['FULLNAME'];
+
+$sql = "SELECT * FROM users WHERE id = '$id'";
+$user = $con->query($sql) or die ($con->error);
+$row = $user->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
@@ -91,17 +102,10 @@
               "
               >Email Address:</label
             ><br /><br />
+            <?php
+              echo '<input type="text" class="input-form" style="width: 49%; margin-right: 1%; float: left; text-align: left; value="'.$row['full_name'].'"></input>';
+            ?>
             <input
-              type="text"
-              class="input-form"
-              name="fullname"
-              style="
-                width: 49%;
-                margin-right: 1%;
-                float: left;
-                text-align: left;
-              "
-            /><input
               type="text"
               class="input-form"
               name="fullname"
@@ -185,7 +189,9 @@
             <!--display: none - hides label-->
             Welcome
           </label>
-          <label
+
+          <?php if(isset($_SESSION['FULLNAME'])){ ?>
+            <label
             style="
               display: block;
               width: 250px;
@@ -199,9 +205,10 @@
               text-overflow: ellipsis;
             "
           >
-            <!--display: none - hides label-->
-            Noah
+            <?php echo $row['full_name']; ?>
           </label>
+          <?php } ?>
+
           <div class="wrapper-sidebar-right">
             <div class="sidebar">
               <!--can be hidden-->
@@ -225,7 +232,7 @@
                         background-color: #66d3fa;
                       "
                     >
-                      <a href="editprofile.html" style="color: #242424"
+                      <a href="editprofile.php" style="color: #242424"
                         ><i class="fas fa-home"></i>Edit Profile</a
                       >
                     </li>
