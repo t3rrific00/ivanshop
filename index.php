@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
   $total = $user->num_rows;
 
   if ($total > 0) {
-      $_SESSION['UserLogin'] = $row['username'];
+      $_SESSION['UserLogin'] = $row['full_name'];
       // echo header("Location: index.php");
   } else {
       // echo "No user found.";
@@ -345,11 +345,10 @@ if(isset($_POST['login'])){
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
       
       <!-- Start User Logged In-->
-
       <?php if(isset($_SESSION['UserLogin'])){ ?>
-        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px;"> <!--display: none - hides label-->
+        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px;">
       <?php }else{ ?>
-        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;"> <!--display: none - hides label-->
+        <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;">
       <?php } ?>
         Welcome
       </label>
@@ -364,9 +363,9 @@ if(isset($_POST['login'])){
       </label>
       <div class="wrapper-sidebar-right">
       <?php if(isset($_SESSION['UserLogin'])){ ?>
-        <div class="sidebar"> <!--can be hidden-->
+        <div class="sidebar">
       <?php }else{ ?>
-        <div class="sidebar" hidden> <!--can be hidden-->
+        <div class="sidebar" hidden>
       <?php } ?>
             <ul>
                 <li><a href="myprofile.html"><i class="fas fa-home"></i>Manage My Account</a></li>
@@ -380,52 +379,57 @@ if(isset($_POST['login'])){
         </div>
       </div>
       <!-- End User Logged In-->
-      
-      <!-- Start Login / Sign Up Form -->
+    
       <?php if(isset($_SESSION['UserLogin'])){ ?>
-        <div class="wrapper-login" hidden> <!--can be hidden-->
+        <div class="wrapper-login" hidden>
       <?php }else{ ?>
-        <div class="wrapper-login"> <!--can be hidden-->
+        <div class="wrapper-login">
       <?php } ?>
         <div class="container-login">
-          <div class="login">Log In</div>
-          <div class="signup" style="background: none;">Sign Up</div>
-          <form class="login-form" method="post">
-              <input type="text" name="username" class="input-form" placeholder="Username"><br>
-              <input type="password" name="password" class="input-form" placeholder="Password"><br>
-              <button type="submit" name="login" class="btn-submit">Login</button>
-              <span class="forgot-form"">Forgot your password? <a href="#">Click here</a></span>
-              <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 20px;">
-              <span class="forgot-form" style="vertical-align: top;">Log in via social media</span><br>
-              <a href="#"><img src="img/fb.webp" width="40px" style="margin-right: 5px;"></a>
-              <a href="#"><img src="img/g.webp" width="40px"></a>
-              </div>
-           </form>
-           <form class="signup-form" method="post" hidden> <!--Don't touch hidden-->
+
+          <!-- Log In Form -->
+          <label class="login">Log In</label>
+          <form class="login-form" method="post" id="login-form">
+            <input type="text" name="username" class="input-form" placeholder="Username"><br>
+            <input type="password" name="password" class="input-form" placeholder="Password"><br>
+            <button type="submit" name="login" class="btn-submit">Login</button>
+            <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
+            <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 20px;">
+            <span class="forgot-form" style="vertical-align: top;">Log in via social media</span><br>
+            <a href="#"><img src="img/fb.webp" width="40px" style="margin-right: 5px;"></a>
+            <a href="#"><img src="img/g.webp" width="40px"></a>
+            </div>
+          </form>
+          <!-- End Log In Form -->
+
+          <br>
+          
+          <!-- Start Sign Up Form-->
+          <label class="signup">Sign Up</label>
+          <form class="signup-form" method="post" id="signup-form">
             <input type="text" name="username" class="input-form" placeholder="Username"><br>
             <input type="password" name="password" class="input-form" placeholder="Password"><br>
             <input type="text" name="fullname" class="input-form" placeholder="Full Name"><br>
-            <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number"><br>
-            <label for="birthdate">Birthdate</label><br>
-            <input type="date" id="birthdate" name="birthdate"><br><br>
+            <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number" style="margin-bottom: 10px;">
             <label for="gender">Gender</label><br>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br><br>
+            <select class="dropdown-form" name="gender" id="gender" style="width: 100%; margin-left: 1%; float: left; text-align: left; margin-bottom: 10px;">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            </select>
+            <label for="birthdate">Birthdate</label><br>
+            <input type="date" id="birthdate" name="birthdate" style="margin-bottom: 10px;">
             <button type="submit" name="signup" class="btn-submit">Create</button>
-              <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 15px;">
+              <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 10px;">
               <span class="forgot-form" style="vertical-align: top;">Sign up via social media</span><br>
               <a href="#"><img src="img/fb.webp" width="40px" style="margin-right: 5px;"></a>
               <a href="#"><img src="img/g.webp" width="40px"></a>
               </div>
-         </form>
+          </form>
+          <!-- End Sign Up Form-->
+
         </div>
       </div>
-      <!-- End Login / Sign Up Form -->
-
     </div>
     </div>
   </div>

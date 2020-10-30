@@ -8,24 +8,6 @@ window.onscroll = function() {scrollFunction()};
 
 $(document).ready(function () {
 
-  $(".login").click(function () {
-    $(".signup-form").hide();
-    $(".login-form").show();
-    $(".signup").css("background", "none");
-    $(".login").css("background", "#2565ae");
-  });
-
-  $(".signup").click(function () {
-    $(".signup-form").show();
-    $(".login-form").hide();
-    $(".login").css("background", "none");
-    $(".signup").css("background", "#2565ae");
-  });
-
-  $(".btn").click(function () {
-    $(".input").val("");
-  });
-
   document.querySelectorAll('[data-modal-target]').forEach(button => {
     button.addEventListener('click', () => {
       const modal = document.querySelector(button.dataset.modalTarget)
@@ -74,6 +56,20 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+// function hideFunction(button) {
+//   if (button == 1) {
+//       document.getElementById('login').style.backgroundColor="#2565ae";
+//       document.getElementById('signup').style.backgroundColor="none";
+//       document.getElementById('login-form').style.display="block";
+//       document.getElementById('signup-form').style.display="none";
+//   } else {
+//     document.getElementById('login').style.backgroundColor="none";
+//     document.getElementById('signup').style.backgroundColor="#2565ae";
+//     document.getElementById('login-form').style.display="none";
+//     document.getElementById('signup-form').style.display="block";
+//   }
+// }
 
 setInterval(function () {
   document.getElementById("radio" + counter).checked = true;
