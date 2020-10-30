@@ -35,10 +35,11 @@ if(isset($_POST['login'])){
   $total = $user->num_rows;
 
   if ($total > 0) {
-      $_SESSION['UserLogin'] = $row['username'];
-      // echo header("Location: index.php");
+    $_SESSION['ID'] = $row['id'];
+    $_SESSION['FULLNAME'] = $row['full_name'];
+    // echo header("Location: index.php");
   } else {
-      // echo "No user found.";
+    // echo "No user found.";
   }
 
 }
@@ -80,7 +81,7 @@ if(isset($_POST['login'])){
     <div class="header">
         <div class="container">
             <div class="logo-container">
-              <h1><a href="index.php"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
+              <h1><a href="#"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
             </div>
             <ul class="navigation">
                 <a href="aboutus.html"><li>About Us</li></a>
@@ -346,24 +347,24 @@ if(isset($_POST['login'])){
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
       
       <!-- Start User Logged In-->
-      <?php if(isset($_SESSION['UserLogin'])){ ?>
+      <?php if(isset($_SESSION['FULLNAME'])){ ?>
         <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px;">
       <?php }else{ ?>
         <label style="font-size: 16px; color: #0f5298; margin: 0 0 0 15px; display: none;">
       <?php } ?>
         Welcome
       </label>
-      <?php if(isset($_SESSION['UserLogin'])){ ?>
+      <?php if(isset($_SESSION['FULLNAME'])){ ?>
         <label style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> <!--display: none - hides label-->
       <?php }else{ ?>
         <label style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:none;"> <!--display: none - hides label-->
       <?php } ?>
-      <?php if(isset($_SESSION['UserLogin'])){ ?>
-        <?php echo $row['full_name']; ?>
+      <?php if(isset($_SESSION['FULLNAME'])){ ?>
+        <?php echo $_SESSION['FULLNAME'];?>
       <?php } ?>
       </label>
       <div class="wrapper-sidebar-right">
-      <?php if(isset($_SESSION['UserLogin'])){ ?>
+      <?php if(isset($_SESSION['FULLNAME'])){ ?>
         <div class="sidebar">
       <?php }else{ ?>
         <div class="sidebar" hidden>
@@ -381,7 +382,7 @@ if(isset($_POST['login'])){
       </div>
       <!-- End User Logged In-->
     
-      <?php if(isset($_SESSION['UserLogin'])){ ?>
+      <?php if(isset($_SESSION['FULLNAME'])){ ?>
         <div class="wrapper-login" hidden>
       <?php }else{ ?>
         <div class="wrapper-login">

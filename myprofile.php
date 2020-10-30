@@ -6,12 +6,11 @@ if (!isset($_SESSION)) {
 
 include_once("connections/connection.php");
 $con = connection();
-$uname = $_SESSION['UserLogin'];
+$id = $_SESSION['ID'];
 
-$sql = "SELECT * FROM users WHERE username = '$uname'";
+$sql = "SELECT * FROM users WHERE id = '$id'";
 $user = $con->query($sql) or die ($con->error);
 $row = $user->fetch_assoc();
-
 
 ?>
 <!DOCTYPE html>
@@ -161,7 +160,7 @@ $row = $user->fetch_assoc();
             Welcome
           </label>
           
-          <?php if(isset($_SESSION['UserLogin'])){ ?>
+          <?php if(isset($_SESSION['FULLNAME'])){ ?>
             <label
             style="
               display: block;
@@ -224,7 +223,7 @@ $row = $user->fetch_assoc();
                   <li style="padding-left: 20px; font-size: 14px;"><a href="#"><i class="fas fa-home"></i>Cancellations</a></li>
                 </ul> -->
                 <li>
-                  <a href="#"><i class="fas fa-address-card"></i>Logout</a>
+                  <a href="logout.php"><i class="fas fa-address-card"></i>Logout</a>
                 </li>
               </ul>
             </div>
