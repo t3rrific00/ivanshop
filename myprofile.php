@@ -6,15 +6,11 @@ if (!isset($_SESSION)) {
 
 include_once("connections/connection.php");
 $con = connection();
-$fname = $_GET['fullname'];
-$eaddress = $_GET['emailadress'];
-$bdate = $_GET['birthdate'];
-$gender = $_GET['gender'];
-$pnumber = $_GET['phonenumber'];
+$uname = $_SESSION['UserLogin'];
 
-$sql = "SELECT * FROM users WHERE full_name = '$fname' AND emailadress ";
+$sql = "SELECT * FROM users WHERE username = '$uname'";
 $user = $con->query($sql) or die ($con->error);
-$row = $students->fetch_assoc();
+$row = $user->fetch_assoc();
 
 
 ?>
@@ -34,7 +30,7 @@ $row = $students->fetch_assoc();
       <div class="container">
         <div class="logo-container">
           <h1>
-            <a href="index.html"
+            <a href="index.php"
               ><img src="img/logo.png" alt="" /><span>IVAN</span>SHOP</a
             >
           </h1>
@@ -105,13 +101,12 @@ $row = $students->fetch_assoc();
               >Email Address:</label
             ><br /><br />
             <label
-              name="fullname"
               style="width: 50%; float: left; text-align: left"
-              >Noahmie Tulod</label
+              ><?php echo $row['full_name'];?></label
             ><label
               name="emailaddress"
               style="width: 50%; float: left; text-align: left"
-              >noahmietulod@gmail.com</label
+              ><?php echo $row['email_address'];?></label
             ><br /><br />
             <label
               style="
@@ -133,11 +128,11 @@ $row = $students->fetch_assoc();
             <label
               name="birthdate"
               style="width: 50%; float: left; text-align: left"
-              >January 16, 1991</label
+              ><?php echo $row['birth_date'];?></label
             ><label
               name="gender"
               style="width: 50%; float: left; text-align: left"
-              >Female</label
+              ><?php echo $row['gender'];?></label
             ><br /><br />
             <label
               style="
@@ -151,7 +146,7 @@ $row = $students->fetch_assoc();
             <label
               name="phonenumber"
               style="width: 50%; float: left; text-align: left"
-              >0999-999-9999</label
+              ><?php echo $row['phone_number'];?></label
             ><br />
           </div>
           <!--End My Profile Form-->
@@ -181,7 +176,7 @@ $row = $students->fetch_assoc();
               text-overflow: ellipsis;
             "
           >
-            <?php echo $_SESSION['UserLogin']; ?>
+            <?php echo $row['full_name']; ?>
           </label>
           <?php } ?>
 

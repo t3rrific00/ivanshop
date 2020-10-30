@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
   $total = $user->num_rows;
 
   if ($total > 0) {
-      $_SESSION['UserLogin'] = $row['full_name'];
+      $_SESSION['UserLogin'] = $row['username'];
       // echo header("Location: index.php");
   } else {
       // echo "No user found.";
@@ -359,7 +359,7 @@ if(isset($_POST['login'])){
         <label style="display: block; width: 250px; font-size: 16px; color: #0f5298; margin: 0 0 0 15px; text-transform: uppercase; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:none;"> <!--display: none - hides label-->
       <?php } ?>
       <?php if(isset($_SESSION['UserLogin'])){ ?>
-        <?php echo $_SESSION['UserLogin']; ?>
+        <?php echo $row['full_name']; ?>
       <?php } ?>
       </label>
       <div class="wrapper-sidebar-right">
