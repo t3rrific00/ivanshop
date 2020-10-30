@@ -12,11 +12,12 @@ if(isset($_POST['signup'])){
   $uname = $_POST['username'];
   $pass = $_POST['password'];
   $fname = $_POST['fullname'];
+  $eaddress = $_POST['emailaddress'];
   $pnumber = $_POST['phonenumber'];
   $bdate = $_POST['birthdate'];
   $gender = $_POST['gender'];
 
-  $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$pnumber', '$bdate', '$gender')";
+  $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
   $con->query($sql) or die ($con->error);
 
   echo header("Location: index.php");
@@ -368,7 +369,7 @@ if(isset($_POST['login'])){
         <div class="sidebar" hidden>
       <?php } ?>
             <ul>
-                <li><a href="myprofile.html"><i class="fas fa-home"></i>Manage My Account</a></li>
+                <li><a href="myprofile.php"><i class="fas fa-home"></i>Manage My Account</a></li>
                 <li><a href="#"><i class="fas fa-home"></i>My Orders</a></li>
                 <!-- <ul> Returns &d Cancellation
                   <li style="padding-left: 20px; font-size: 14px;"><a href="#"><i class="fas fa-home"></i>Returns</a></li>
@@ -409,6 +410,7 @@ if(isset($_POST['login'])){
           <form class="signup-form" method="post" id="signup-form">
             <input type="text" name="username" class="input-form" placeholder="Username"><br>
             <input type="password" name="password" class="input-form" placeholder="Password"><br>
+            <input type="email" name="emailaddress" class="input-form" placeholder="Email Address"><br>
             <input type="text" name="fullname" class="input-form" placeholder="Full Name"><br>
             <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number" style="margin-bottom: 10px;">
             <label for="gender">Gender</label><br>

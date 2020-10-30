@@ -1,3 +1,23 @@
+<?php
+
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+include_once("connections/connection.php");
+$con = connection();
+$fname = $_GET['fullname'];
+$eaddress = $_GET['emailadress'];
+$bdate = $_GET['birthdate'];
+$gender = $_GET['gender'];
+$pnumber = $_GET['phonenumber'];
+
+$sql = "SELECT * FROM users WHERE full_name = '$fname' AND emailadress ";
+$user = $con->query($sql) or die ($con->error);
+$row = $students->fetch_assoc();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -85,11 +105,11 @@
               >Email Address:</label
             ><br /><br />
             <label
-              for="fullname"
+              name="fullname"
               style="width: 50%; float: left; text-align: left"
               >Noahmie Tulod</label
             ><label
-              for="email"
+              name="emailaddress"
               style="width: 50%; float: left; text-align: left"
               >noahmietulod@gmail.com</label
             ><br /><br />
@@ -111,11 +131,11 @@
               >Gender:</label
             ><br /><br />
             <label
-              for="birthdate"
+              name="birthdate"
               style="width: 50%; float: left; text-align: left"
               >January 16, 1991</label
             ><label
-              for="email"
+              name="gender"
               style="width: 50%; float: left; text-align: left"
               >Female</label
             ><br /><br />
@@ -126,10 +146,10 @@
                 float: left;
                 text-align: left;
               "
-              >Mobile:</label
+              >Phone Number:</label
             ><br /><br />
             <label
-              for="mobile"
+              name="phonenumber"
               style="width: 50%; float: left; text-align: left"
               >0999-999-9999</label
             ><br />
@@ -145,7 +165,9 @@
             <!--display: none - hides label-->
             Welcome
           </label>
-          <label
+          
+          <?php if(isset($_SESSION['UserLogin'])){ ?>
+            <label
             style="
               display: block;
               width: 250px;
@@ -159,15 +181,15 @@
               text-overflow: ellipsis;
             "
           >
-            <!--display: none - hides label-->
-            Noah
+            <?php echo $_SESSION['UserLogin']; ?>
           </label>
+          <?php } ?>
+
           <div class="wrapper-sidebar-right">
             <div class="sidebar">
-              <!--can be hidden-->
               <ul>
                 <li>
-                  <a href="myprofile.html"
+                  <a href="myprofile.php"
                     ><i class="fas fa-home"></i>Manage My Account</a
                   >
                 </li>
@@ -179,7 +201,7 @@
                       background-color: #66d3fa;
                     "
                   >
-                    <a href="myprofile.html" style="color: #242424"
+                    <a href="myprofile.php" style="color: #242424"
                       ><i class="fas fa-home"></i>My Profile</a
                     >
                   </li>
