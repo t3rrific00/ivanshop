@@ -36,6 +36,7 @@ if(isset($_POST['login'])){
     $_SESSION['ID'] = $row['id'];
     $_SESSION['FULLNAME'] = $row['full_name'];
     echo header("Location: index.php");
+    unset($_SESSION['LOGIN-ERROR']);
   } else {
     $_SESSION['LOGIN-ERROR'] = "User not found";
   }
@@ -60,13 +61,14 @@ if(isset($_POST['signup'])){
   if (strlen(trim($pass)) <= 4) {
     $_SESSION['SIGNUP-ERROR'] = "Password must be at least 4 characters";
   } else {
-    if (is_numeric($pnumber)) {
+    if(is_numeric($pnumber)) {
       if ($total >= 1) {
         $_SESSION['SIGNUP-ERROR'] = "User already exist";
       } else {
         $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
         $con->query($sql) or die ($con->error);
         echo header("Location: index.php");
+        unset($_SESSION['SIGNUP-ERROR']);
       }
     } else {
       $_SESSION['SIGNUP-ERROR'] = "Invalid phone number";
