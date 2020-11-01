@@ -13,6 +13,23 @@ $sql = "SELECT * FROM users WHERE id = '$id'";
 $user = $con->query($sql) or die ($con->error);
 $row = $user->fetch_assoc();
 
+if (isset($_POST['submit'])) {
+  $funame = $_POST['fullname'];
+  $eaddress = $_POST['emailaddress'];
+  $bdate = $_POST['birthdate'];
+  $gender = $_POST['gender'];
+  $pnumber = $_POST['phonenumber'];
+
+  $sql = "UPDATE users SET full_name = '$funame', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
+  $con->query($sql) or die ($con->error);
+
+  echo header("Location: editprofile.php?id=".$id);
+}
+
+if (isset($_POST['cancel'])) {
+  echo header("Location: myprofile.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +99,7 @@ $row = $user->fetch_assoc();
           style="background-color: #fff; padding-top: 10px"
         >
           <!--Start Edit Profile Form-->
-          <div class="middle-form">
+          <form class="middle-form" method="post">
             <label
               style="
                 font-weight: bold;
@@ -102,16 +119,18 @@ $row = $user->fetch_assoc();
               "
               >Email Address:</label
             ><br /><br />
-            <input type="text" 
+            <input 
+              type="text" 
               class="input-form" 
+              name="fullname"
               style="width: 49%; margin-right: 1%; float: left; text-align: left;" 
-              value="<?php echo $row['full_name'];?>">
+              value="<?php echo $row['full_name'];?>" required>
             <input
               type="text"
               class="input-form"
-              name="fullname"
+              name="emailaddress"
               style="width: 49%; margin-left: 1%; float: left; text-align: left"
-              value="<?php echo $row['email_address'];?>">
+              value="<?php echo $row['email_address'];?>" required>
             <br/><br/>
             <label
               style="
@@ -137,28 +156,31 @@ $row = $user->fetch_assoc();
               id="birthdate"
               name="birthdate"
               style="width: 49%; margin-right: 1%; float: left; text-align: left;"
-              value="<?php echo $row['birth_date'];?>">
+              value="<?php echo $row['birth_date'];?>" required>
             <select
               class="dropdown-form"
               name="gender"
-              id="gender"
-              style="width: 49%; margin-left: 1%; float: left; text-align: left"
-            >
+              style="width: 49%; margin-left: 1%; float: left; text-align: left">
               <?php switch ($row['gender']):
                 case "Male": ?>
-                    <option value="male" selected>Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="Male" selected>Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                     <?php break; ?>
                 <?php case "Female": ?>
-                    <option value="male">Male</option>
-                    <option value="female" selected>Female</option>
-                    <option value="other">Other</option>
+                    <option value="Male">Male</option>
+                    <option value="Female" selected>Female</option>
+                    <option value="Other">Other</option>
                     <?php break; ?>
                 <?php case "Other": ?>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other" selected>Other</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other" selected>Other</option>
+                    <?php break; ?>
+                <?php default: ?>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                     <?php break; ?>
               <?php endswitch; ?>
             </select><br /><br />
@@ -170,25 +192,25 @@ $row = $user->fetch_assoc();
                 float: left;
                 text-align: left;
               "
-              >Mobile:</label
+              >Phone Number:</label
             ><br /><br />
             <input
               type="text"
               class="input-form"
-              name="fullname"
+              name="phonenumber"
               style="
                 width: 49%;
                 margin-right: 1%;
                 float: left;
-                text-align: left;
-              "
-            /><br /><br /><br />
-            <button class="btn-submit" style="width: 49%; margin-right: 1%">
+                text-align: left;"
+              value="<?php echo $row['phone_number'];?>" required>
+            <br /><br /><br />
+            <button type="submit" name="submit" value="submit" class="btn-submit" style="width: 49%; margin-right: 1%">
               Save</button
-            ><button class="btn-submit" style="width: 49%; margin-left: 1%">
+            ><button type="submit" name="cancel" value="cancel" class="btn-submit" style="width: 49%; margin-left: 1%">
               Cancel
             </button>
-          </div>
+          </form>
           <!--End Edit Profile Form-->
         </div>
         <div
