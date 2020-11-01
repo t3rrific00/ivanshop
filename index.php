@@ -24,7 +24,7 @@ if(isset($_POST['login'])){
     $_SESSION['FULLNAME'] = $row['full_name'];
     echo header("Location: index.php");
   } else {
-    $_SESSION['LOGIN-ERROR'] = "User not found.";
+    $_SESSION['LOGIN-ERROR'] = "User not found";
   }
   
 }
@@ -44,14 +44,21 @@ if(isset($_POST['signup'])){
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
 
-  if ($total >= 1) {
-    $_SESSION['SIGNUP-ERROR'] = "User already exist.";
+  if (strlen(trim($pass)) <= 4) {
+    $_SESSION['SIGNUP-ERROR'] = "Password must be at least 4 characters";
   } else {
-    $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
-    $con->query($sql) or die ($con->error);
-    echo header("Location: index.php");
+    if (is_numeric($pnumber)) {
+      if ($total >= 1) {
+        $_SESSION['SIGNUP-ERROR'] = "User already exist";
+      } else {
+        $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
+        $con->query($sql) or die ($con->error);
+        echo header("Location: index.php");
+      }
+    } else {
+      $_SESSION['SIGNUP-ERROR'] = "Invalid phone number";
+    }
   }
-
 }
 
 ?>
@@ -426,7 +433,7 @@ if(isset($_POST['signup'])){
               <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['SIGNUP-ERROR']; ?></label>
             <?php } ?>
             <input type="text" name="username" class="input-form" placeholder="Username" required><br>
-            <input type="password" name="password" class="input-form" placeholder="Password" required><br>
+            <input type="password" name="password" class="input-form" placeholder="Password" id="password" required><br>
             <input type="email" name="emailaddress" class="input-form" placeholder="Email Address" required><br>
             <input type="text" name="fullname" class="input-form" placeholder="Full Name" required><br>
             <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number" style="margin-bottom: 10px;">

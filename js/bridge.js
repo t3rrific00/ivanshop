@@ -4,43 +4,43 @@ var counter = 1;
 mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 $(document).ready(function () {
+  document.querySelectorAll("[data-modal-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(button.dataset.modalTarget);
+      openModal(modal);
+    });
+  });
 
-  document.querySelectorAll('[data-modal-target]').forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(button.dataset.modalTarget)
-      openModal(modal)
-    })
-  })
-  
-  document.getElementById('overlay').addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modal.active')
-    modals.forEach(modal => {
-      closeModal(modal)
-    })
-  })
-  
-  document.querySelectorAll('[data-close-button]').forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal')
-      closeModal(modal)
-    })
-  })
+  document.getElementById("overlay").addEventListener("click", () => {
+    const modals = document.querySelectorAll(".modal.active");
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  });
 
+  document.querySelectorAll("[data-close-button]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      closeModal(modal);
+    });
+  });
 });
 
 function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add('active')
-  document.getElementById('overlay').classList.add('active')
+  if (modal == null) return;
+  modal.classList.add("active");
+  document.getElementById("overlay").classList.add("active");
 }
 
 function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove('active')
-  document.getElementById('overlay').classList.remove('active')
+  if (modal == null) return;
+  modal.classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
 }
 
 function scrollFunction() {
@@ -56,20 +56,6 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
-// function hideFunction(button) {
-//   if (button == 1) {
-//       document.getElementById('login').style.backgroundColor="#2565ae";
-//       document.getElementById('signup').style.backgroundColor="none";
-//       document.getElementById('login-form').style.display="block";
-//       document.getElementById('signup-form').style.display="none";
-//   } else {
-//     document.getElementById('login').style.backgroundColor="none";
-//     document.getElementById('signup').style.backgroundColor="#2565ae";
-//     document.getElementById('login-form').style.display="none";
-//     document.getElementById('signup-form').style.display="block";
-//   }
-// }
 
 setInterval(function () {
   document.getElementById("radio" + counter).checked = true;
