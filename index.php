@@ -45,7 +45,7 @@ if(isset($_POST['signup'])){
   $total = $user->num_rows;
 
   if ($total >= 1) {
-    $_SESSION['SIGNUP-ERROR'] = "Username or email already exist.";
+    $_SESSION['SIGNUP-ERROR'] = "User already exist.";
   } else {
     $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
     $con->query($sql) or die ($con->error);
@@ -402,10 +402,9 @@ if(isset($_POST['signup'])){
           <!-- Log In Form -->
           <label class="login">Log In</label>
           <form class="login-form" method="post" id="login-form">
-          <?php if(isset($_SESSION['LOGIN-ERROR'])){ ?>
-            <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['LOGIN-ERROR']; ?></label>
-          <?php } ?>
-            <!-- <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px;">Error</label> -->
+            <?php if(isset($_SESSION['LOGIN-ERROR'])){ ?>
+              <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['LOGIN-ERROR']; ?></label>
+            <?php } ?>
             <input type="text" name="username" class="input-form" placeholder="Username" required><br>
             <input type="password" name="password" class="input-form" placeholder="Password" required><br>
             <button type="submit" name="login" class="btn-submit">Login</button>
