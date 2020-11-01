@@ -58,7 +58,7 @@ if(isset($_POST['signup'])){
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
 
-  if (strlen(trim($pass)) <= 4) {
+  if (strlen(trim($pass)) < 4) {
     $_SESSION['SIGNUP-ERROR'] = "Password must be at least 4 characters";
   } else {
     if(is_numeric($pnumber)) {
