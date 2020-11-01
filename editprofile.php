@@ -102,15 +102,17 @@ $row = $user->fetch_assoc();
               "
               >Email Address:</label
             ><br /><br />
-            <?php
-              echo '<input type="text" class="input-form" style="width: 49%; margin-right: 1%; float: left; text-align: left; value="'.$row['full_name'].'"></input>';
-            ?>
+            <input type="text" 
+              class="input-form" 
+              style="width: 49%; margin-right: 1%; float: left; text-align: left;" 
+              value="<?php echo $row['full_name'];?>">
             <input
               type="text"
               class="input-form"
               name="fullname"
               style="width: 49%; margin-left: 1%; float: left; text-align: left"
-            /><br /><br />
+              value="<?php echo $row['email_address'];?>">
+            <br/><br/>
             <label
               style="
                 font-weight: bold;
@@ -134,23 +136,32 @@ $row = $user->fetch_assoc();
               type="date"
               id="birthdate"
               name="birthdate"
-              style="
-                width: 49%;
-                margin-right: 1%;
-                float: left;
-                text-align: left;
-              "
-            />
+              style="width: 49%; margin-right: 1%; float: left; text-align: left;"
+              value="<?php echo $row['birth_date'];?>">
             <select
               class="dropdown-form"
               name="gender"
               id="gender"
               style="width: 49%; margin-left: 1%; float: left; text-align: left"
             >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option></select
-            ><br /><br />
+              <?php switch ($row['gender']):
+                case "Male": ?>
+                    <option value="male" selected>Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <?php break; ?>
+                <?php case "Female": ?>
+                    <option value="male">Male</option>
+                    <option value="female" selected>Female</option>
+                    <option value="other">Other</option>
+                    <?php break; ?>
+                <?php case "Other": ?>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other" selected>Other</option>
+                    <?php break; ?>
+              <?php endswitch; ?>
+            </select><br /><br />
             <label
               style="
                 font-weight: bold;
