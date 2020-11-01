@@ -2,27 +2,12 @@
 
 if (!isset($_SESSION)) {
   session_start();
+  unset($_SESSION['LOGIN-ERROR']);
+  unset($_SESSION['SIGNUP-ERROR']);
 }
 
 include_once("connections/connection.php");
 $con = connection();
-
-if(isset($_POST['signup'])){
-
-  $uname = $_POST['username'];
-  $pass = $_POST['password'];
-  $fname = $_POST['fullname'];
-  $eaddress = $_POST['emailaddress'];
-  $pnumber = $_POST['phonenumber'];
-  $bdate = $_POST['birthdate'];
-  $gender = $_POST['gender'];
-
-  $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
-  $con->query($sql) or die ($con->error);
-
-  echo header("Location: index.php");
-
-}
 
 if(isset($_POST['login'])){
 
@@ -37,9 +22,34 @@ if(isset($_POST['login'])){
   if ($total > 0) {
     $_SESSION['ID'] = $row['id'];
     $_SESSION['FULLNAME'] = $row['full_name'];
-    // echo header("Location: index.php");
+    echo header("Location: index.php");
   } else {
-    // echo "No user found.";
+    $_SESSION['LOGIN-ERROR'] = "User not found.";
+  }
+  
+}
+
+if(isset($_POST['signup'])){
+
+  $uname = $_POST['username'];
+  $pass = $_POST['password'];
+  $fname = $_POST['fullname'];
+  $eaddress = $_POST['emailaddress'];
+  $pnumber = $_POST['phonenumber'];
+  $bdate = $_POST['birthdate'];
+  $gender = $_POST['gender'];
+
+  $result = "SELECT * FROM users WHERE username = '$uname' OR email_address = '$eaddress'";
+  $user = $con->query($result) or die ($con->error);
+  $row = $user->fetch_assoc();
+  $total = $user->num_rows;
+
+  if ($total >= 1) {
+    $_SESSION['SIGNUP-ERROR'] = "Username or email already exist.";
+  } else {
+    $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
+    $con->query($sql) or die ($con->error);
+    echo header("Location: index.php");
   }
 
 }
@@ -392,8 +402,12 @@ if(isset($_POST['login'])){
           <!-- Log In Form -->
           <label class="login">Log In</label>
           <form class="login-form" method="post" id="login-form">
-            <input type="text" name="username" class="input-form" placeholder="Username"><br>
-            <input type="password" name="password" class="input-form" placeholder="Password"><br>
+          <?php if(isset($_SESSION['LOGIN-ERROR'])){ ?>
+            <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['LOGIN-ERROR']; ?></label>
+          <?php } ?>
+            <!-- <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px;">Error</label> -->
+            <input type="text" name="username" class="input-form" placeholder="Username" required><br>
+            <input type="password" name="password" class="input-form" placeholder="Password" required><br>
             <button type="submit" name="login" class="btn-submit">Login</button>
             <span class="forgot-form">Forgot your password? <a href="#">Click here</a></span>
             <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 20px;">
@@ -409,10 +423,13 @@ if(isset($_POST['login'])){
           <!-- Start Sign Up Form-->
           <label class="signup">Sign Up</label>
           <form class="signup-form" method="post" id="signup-form">
-            <input type="text" name="username" class="input-form" placeholder="Username"><br>
-            <input type="password" name="password" class="input-form" placeholder="Password"><br>
-            <input type="email" name="emailaddress" class="input-form" placeholder="Email Address"><br>
-            <input type="text" name="fullname" class="input-form" placeholder="Full Name"><br>
+            <?php if(isset($_SESSION['SIGNUP-ERROR'])){ ?>
+              <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['SIGNUP-ERROR']; ?></label>
+            <?php } ?>
+            <input type="text" name="username" class="input-form" placeholder="Username" required><br>
+            <input type="password" name="password" class="input-form" placeholder="Password" required><br>
+            <input type="email" name="emailaddress" class="input-form" placeholder="Email Address" required><br>
+            <input type="text" name="fullname" class="input-form" placeholder="Full Name" required><br>
             <input type="text" name="phonenumber" class="input-form" placeholder="Phone Number" style="margin-bottom: 10px;">
             <label for="gender">Gender</label><br>
             <select class="dropdown-form" name="gender" id="gender" style="width: 100%; margin-left: 1%; float: left; text-align: left; margin-bottom: 10px;">
@@ -421,7 +438,7 @@ if(isset($_POST['login'])){
             <option value="Other">Other</option>
             </select>
             <label for="birthdate">Birthdate</label><br>
-            <input type="date" id="birthdate" name="birthdate" style="margin-bottom: 10px;">
+            <input type="date" id="birthdate" name="birthdate" style="margin-bottom: 10px;" required>
             <button type="submit" name="signup" class="btn-submit">Create</button>
               <div style="width: 100%; height: 100% text-align: left; vertical-align: middle; margin-top: 10px;">
               <span class="forgot-form" style="vertical-align: top;">Sign up via social media</span><br>
