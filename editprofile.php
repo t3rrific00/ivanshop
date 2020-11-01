@@ -7,20 +7,19 @@ if (!isset($_SESSION)) {
 include_once("connections/connection.php");
 $con = connection();
 $id = $_SESSION['ID'];
-$fname = $_SESSION['FULLNAME'];
 
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $user = $con->query($sql) or die ($con->error);
 $row = $user->fetch_assoc();
 
 if (isset($_POST['submit'])) {
-  $funame = $_POST['fullname'];
+  $fname = $_POST['fullname'];
   $eaddress = $_POST['emailaddress'];
   $bdate = $_POST['birthdate'];
   $gender = $_POST['gender'];
   $pnumber = $_POST['phonenumber'];
 
-  $sql = "UPDATE users SET full_name = '$funame', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
+  $sql = "UPDATE users SET full_name = '$fname', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
   $con->query($sql) or die ($con->error);
 
   echo header("Location: editprofile.php?id=".$id);

@@ -9,6 +9,19 @@ if (!isset($_SESSION)) {
 include_once("connections/connection.php");
 $con = connection();
 
+if(isset($_SESSION['ID'])) {
+  $id = $_SESSION['ID'];
+
+  $initSql = "SELECT * FROM users WHERE id = '$id'";
+  $initUser = $con->query($initSql) or die ($con->error);
+  $initRow = $initUser->fetch_assoc();
+  $initTotal = $initUser->num_rows;
+  
+  if ($initTotal > 0) {
+    $_SESSION['FULLNAME'] = $initRow['full_name'];
+  }
+}
+
 if(isset($_POST['login'])){
 
   $uname = $_POST['username'];
