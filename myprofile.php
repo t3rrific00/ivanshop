@@ -127,7 +127,12 @@ $row = $user->fetch_assoc();
             <label
               name="birthdate"
               style="width: 50%; float: left; text-align: left"
-              ><?php echo $row['birth_date'];?></label
+              >
+              <?php 
+              $date = date_create($row['birth_date']);
+              echo date_format($date, "F j, Y");
+              ?>
+              </label
             ><label
               name="gender"
               style="width: 50%; float: left; text-align: left"

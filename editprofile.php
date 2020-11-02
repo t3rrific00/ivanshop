@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Asia/Manila');
+
 if (!isset($_SESSION)) {
   session_start();
   unset($_SESSION['EDITPROFILE-ERROR']);
@@ -8,6 +10,7 @@ if (!isset($_SESSION)) {
 include_once("connections/connection.php");
 $con = connection();
 $id = $_SESSION['ID'];
+$fullname = $_SESSION['FULLNAME'];
 
 $initSql = "SELECT * FROM users WHERE id = '$id'";
 $initUser = $con->query($initSql) or die ($con->error);
@@ -20,18 +23,31 @@ if (isset($_POST['submit'])) {
   $gender = $_POST['gender'];
   $pnumber = $_POST['phonenumber'];
 
-  $result = "SELECT * FROM users WHERE email_address = '$eaddress'";
+  $result = "SELECT * FROM users WHERE full_name = '$fullname'";
   $user = $con->query($result) or die ($con->error);
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
 
   if(is_numeric($pnumber)) {
-    if ($total >= 1) {
-      $sql = "UPDATE users SET full_name = '$fname', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
-      $con->query($sql) or die ($con->error);
-      echo header("Location: editprofile.php?id=".$id);
-      unset($_SESSION['EDITPROFILE-ERROR']);
+
+    $ageLimit = 15;
+
+    if(is_string($bdate)) {
+      $birthdate = strtotime($bdate);
     }
+
+    if(time() - $birthdate < $ageLimit * 31536000)  {
+      $_SESSION['EDITPROFILE-ERROR'] = "Eligibility 15 years and above";
+    } else {
+      if ($total >= 1) {
+        $sql = "UPDATE users SET full_name = '$fname', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
+        $con->query($sql) or die ($con->error);
+        echo header("Location: editprofile.php?id=".$id);
+        unset($_SESSION['EDITPROFILE-ERROR']);
+        } else {
+          echo "Server error";
+        }
+      }
   } else {
     $_SESSION['EDITPROFILE-ERROR'] = "Invalid phone number";
   }
@@ -112,7 +128,7 @@ if (isset($_POST['cancel'])) {
           <!--Start Edit Profile Form-->
           <form class="middle-form" method="post">
             <?php if(isset($_SESSION['EDITPROFILE-ERROR'])){ ?>
-              <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['EDITPROFILE-ERROR']; ?></label>
+              <label  style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['EDITPROFILE-ERROR']; ?></label>
             <?php } ?>
             <label
               style="
