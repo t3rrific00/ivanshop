@@ -9,6 +9,15 @@ if (!isset($_SESSION)) {
 include_once("connections/connection.php");
 $con = connection();
 
+// $listSql = "SELECT * FROM products ORDER BY id DESC";
+// $products = $con->query($listSql) or die ($con->error);
+// $listRow = $products->fetch_assoc();
+
+$listSql = "SELECT * FROM products ORDER BY id DESC";
+$products = mysqli_query($con, $listSql);
+$productsResult = $con->query($listSql) or die ($con->error);
+$productRow = $productsResult->fetch_assoc();
+
 if(isset($_SESSION['ID'])) {
   $id = $_SESSION['ID'];
 
@@ -186,7 +195,7 @@ if(isset($_POST['signup'])){
     </div>
     <!--End Search-->
 
-    <div class="row-grid">
+    <!-- <div class="row-grid">
       <div data-modal-target="#modal" class="column-grid">
         <div class="card-grid">
           <img src="img/img1.jpg" alt="">
@@ -359,7 +368,58 @@ if(isset($_POST['signup'])){
           <p><span>&#8369;</span>100</p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+<?php
+
+$max_columns = 4;
+
+$data = [];
+while($count = mysqli_fetch_array($products))
+{
+    $data[] = $count;
+}
+
+?>
+
+<table style="table-layout: fixed; width: 100%;">
+<?php
+    $record_id = 0;
+    while(true) // create rows until out of records to display
+    {
+        for ($column = 1; $column<=$max_columns; $column++){
+            //stop loop when there is no more data available
+            if (!isset($data[$record_id])) {
+                return;
+            }
+
+            // if start of column, open <tr>
+            ?>
+            <?php do{ ?>
+            <?php if ($column == 1){ ?>
+                <!-- echo "<tr>"; -->
+                <tr class="column-grid"">
+            <?php } ?>
+
+            <td class="card-grid">
+            <?php echo '<img src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
+            <br>
+            <h3><?php echo $productRow['name']; ?></h3>
+            <p><span>&#8369;</span>100</p>
+            </td>
+
+            <!--if column equals max columns, close table row-->
+            <?php if ($column == $max_columns){ ?>
+                <!-- echo "</tr>"; -->
+                </tr>
+            <?php } ?>
+
+            <?php $record_id++; // next record ?>
+            <?php }while($productRow = $productsResult->fetch_assoc()) ?>
+      <?php } ?>
+    <?php } ?>
+</table>
+
     <br>
     <!--Start Pagination-->
     <div class="pagination-center">
