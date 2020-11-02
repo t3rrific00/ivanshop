@@ -102,7 +102,11 @@ if(isset($_POST['signup'])){
   <!--Start Modal-->
   <div class="modal" id="modal">
     <div class="modal-header">
-      <div class="title">SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</div>
+      <div class="title">
+      <?php if(isset($_SESSION['NAME'])){ ?>
+      <?php echo $_SESSION['NAME'];?>
+      <?php } ?>
+      </div>
       <button data-close-button class="close-button">&times;</button>
     </div>
     <label><span>&#8369;</span>100</label>
@@ -370,54 +374,55 @@ if(isset($_POST['signup'])){
       </div>
     </div> -->
 
-<?php
+    <?php
 
-$max_columns = 3;
+    $max_columns = 4;
 
-// $data = [];
-while($count = mysqli_fetch_array($products))
-{
-    // $data[] = $count;
-    $data = array($count);
-}
-
-?>
-
-<table style="table-layout: fixed; width: 100%;">
-<?php
-    $record_id = 0;
-    while(true) // create rows until out of records to display
+    $data = [];
+    while($count = mysqli_fetch_array($products))
     {
-        for ($column = 1; $column<=$max_columns; $column++){
-            //stop loop when there is no more data available
-            if (!isset($data[$record_id])) {
-                return;
-            }
+        $data[] = $count;
+    }
 
-            // if start of column, open <tr>
-            ?>
-            <?php do{ ?>
-            <?php if ($column == 1){ ?>
-                <tr class="column-grid">
-            <?php } ?>
+    ?>
 
-            <td class="card-grid">
-            <?php echo '<img style="width: 100px; height: 100px;" src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
-            <br>
-            <h3><?php echo $productRow['name']; ?></h3>
-            <p><span>&#8369;</span>100</p>
-            </td>
+    <table style="table-layout: fixed; width: 100%;">
+    <?php
+        $record_id = 0;
+        while(true) // create rows until out of records to display
+        {
+            for ($column = 1; $column<=$max_columns; $column++){
+                //stop loop when there is no more data available
+                if (!isset($data[$record_id])) {
+                    return;
+                }
 
-            <!--if column equals max columns, close table row-->
-            <?php if ($column == $max_columns){ ?>
-                </tr>
-            <?php } ?>
+                // if start of column, open <tr>
+                ?>
 
-            <?php $record_id++; // next record ?>
-            <?php }while($productRow = $productsResult->fetch_assoc()) ?>
-      <?php } ?>
-    <?php } ?>
-</table>
+                <?php do{ ?>
+                <?php if ($column == 1){ ?>
+                    <tr class="column-grid">
+                <?php } ?>
+
+                <td class="card-grid" data-modal-target="#modal">
+                <?php $_SESSION['NAME'] = $productRow['name'];?>
+                <?php echo '<img style="width: 100px; height: 100px;" src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
+                <br>
+                <h3><?php echo $productRow['name']; ?></h3>
+                <p><span>&#8369;</span><?php echo $productRow['price']; ?></p>
+                </td>
+
+                <!--if column equals max columns, close table row-->
+                <?php if ($column == $max_columns){ ?>
+                    </tr>
+                <?php } ?>
+
+                <?php $record_id++; // next record ?>
+                <?php }while($productRow = $productsResult->fetch_assoc()) ?>
+          <?php } ?>
+        <?php } ?>
+    </table>
 
     <br>
     <!--Start Pagination-->
