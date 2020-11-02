@@ -27,8 +27,8 @@ if (isset($_POST['submit'])) {
   $user = $con->query($result) or die ($con->error);
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
-
-  if(is_numeric($pnumber)) {
+  
+  if (preg_match("/^[0-9- ]+$/D", $pnumber)) {
 
     $ageLimit = 15;
 
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
         echo header("Location: editprofile.php?id=".$id);
         unset($_SESSION['EDITPROFILE-ERROR']);
         } else {
-          echo "Server error";
+          $_SESSION['EDITPROFILE-ERROR'] = "Server error";
         }
       }
   } else {
