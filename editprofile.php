@@ -147,8 +147,12 @@ if (isset($_POST['cancel'])) {
                 float: left;
                 text-align: left;
               "
-              >Email Address:</label
-            ><br /><br />
+              >Email Address:</label>
+            <?php if(isset($_SESSION['EDITPROFILE-ERROR'])){ ?>
+              <br /><br /><br />
+            <?php } else { ?>
+              <br /><br />
+            <?php } ?>
             <input 
               type="text" 
               class="input-form" 
