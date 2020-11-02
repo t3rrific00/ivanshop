@@ -372,12 +372,13 @@ if(isset($_POST['signup'])){
 
 <?php
 
-$max_columns = 4;
+$max_columns = 3;
 
-$data = [];
+// $data = [];
 while($count = mysqli_fetch_array($products))
 {
-    $data[] = $count;
+    // $data[] = $count;
+    $data = array($count);
 }
 
 ?>
@@ -397,12 +398,11 @@ while($count = mysqli_fetch_array($products))
             ?>
             <?php do{ ?>
             <?php if ($column == 1){ ?>
-                <!-- echo "<tr>"; -->
-                <tr class="column-grid"">
+                <tr class="column-grid">
             <?php } ?>
 
             <td class="card-grid">
-            <?php echo '<img src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
+            <?php echo '<img style="width: 100px; height: 100px;" src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
             <br>
             <h3><?php echo $productRow['name']; ?></h3>
             <p><span>&#8369;</span>100</p>
@@ -410,7 +410,6 @@ while($count = mysqli_fetch_array($products))
 
             <!--if column equals max columns, close table row-->
             <?php if ($column == $max_columns){ ?>
-                <!-- echo "</tr>"; -->
                 </tr>
             <?php } ?>
 
