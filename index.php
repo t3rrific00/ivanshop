@@ -97,24 +97,6 @@ if(isset($_POST['signup'])){
     <script src="js/bridge.js"></script>
 </head>
 <body>
-  
-  <!--Start Modal-->
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <div class="title">Title</div>
-      <button data-close-button class="close-button">&times;</button>
-    </div>
-    <label><span>&#8369;</span>Price</label>
-    <br>
-    <div class="modal-body">
-    <img src="img/img1.jpg" alt="">
-      <br>
-      <p>Description</p>
-      <br>
-      <button class="btn-submit">Add to Cart</button>
-    </div>
-  </div>
-  <!--End Modal-->
 
   <div id="overlay"></div>
     <div class="header">
@@ -371,7 +353,7 @@ if(isset($_POST['signup'])){
     <div class="grid-container">
       <?php do{ ?>
       <div class="grid-item">
-        <a data-modal-target="#modal">
+        <a href="#">
         <?php echo '<img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 5px; display: block;" src="data:image/png;base64,'.base64_encode($productsRow['image']).'"/>'; ?>
         <label style="font-size: 12px;"><?php echo $productsRow['name']; ?></label><br>
         <label style="font-size: 20px;"><span>&#8369;</span><?php echo $productsRow['price']; ?></label>
