@@ -353,9 +353,9 @@ if(isset($_POST['signup'])){
     <div class="grid-container">
       <?php do{ ?>
       <div class="grid-item">
-        <a href="#">
-        <?php echo '<img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 5px; display: block;" src="data:image/png;base64,'.base64_encode($productsRow['image']).'"/>'; ?>
-        <label style="font-size: 12px;"><?php echo $productsRow['name']; ?></label><br>
+        <a href="details.php?id=<?php echo $productsRow['id'];?>">
+        <?php echo '<img style="width: 100%; height: 200px; margin-bottom: 5px;" src="data:image/png;base64,'.base64_encode($productsRow['image']).'"/>'; ?>
+        <label class="ellipsis"><?php echo $productsRow['name']; ?></label>
         <label style="font-size: 20px;"><span>&#8369;</span><?php echo $productsRow['price']; ?></label>
         </a>
       </div>
