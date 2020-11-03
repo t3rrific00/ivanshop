@@ -126,11 +126,12 @@ if(isset($_POST['signup'])){
     </div>
     <div class="column middle" style="background-color:#fff; padding-top: 10px; margin: 10px 0;">
    
-    
+    <?php if($detailsRow != null) { ?>
     <!--Start Here-->
     <?php echo '<img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 5px; display: block;" src="data:image/png;base64,'.base64_encode($detailsRow['image']).'"/>'; ?>
     <label style="font-size: 12px;"><?php echo $detailsRow['name']; ?></label><br>
     <label style="font-size: 20px;"><span>&#8369;</span><?php echo $detailsRow['price']; ?></label>
+    <?php } ?>
 
 
     </div>
