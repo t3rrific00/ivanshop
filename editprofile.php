@@ -14,14 +14,15 @@ $fullname = $_SESSION['FULLNAME'];
 
 $initSql = "SELECT * FROM users WHERE id = '$id'";
 $initUser = $con->query($initSql) or die ($con->error);
-$row = $initUser->fetch_assoc();
+$initRow = $initUser->fetch_assoc();
+$initTotal = $initUser->num_rows;
 
 if (isset($_POST['submit'])) {
-  $fname = $_POST['fullname'];
-  $eaddress = $_POST['emailaddress'];
-  $bdate = $_POST['birthdate'];
-  $gender = $_POST['gender'];
-  $pnumber = $_POST['phonenumber'];
+  $fname = trim($_POST['fullname']);
+  $eaddress = trim($_POST['emailaddress']);
+  $bdate = trim($_POST['birthdate']);
+  $gender = trim($_POST['gender']);
+  $pnumber = trim($_POST['phonenumber']);
 
   $result = "SELECT * FROM users WHERE full_name = '$fullname'";
   $user = $con->query($result) or die ($con->error);
@@ -45,12 +46,20 @@ if (isset($_POST['submit'])) {
         echo header("Location: editprofile.php?id=".$id);
         unset($_SESSION['EDITPROFILE-ERROR']);
         } else {
-          $_SESSION['EDITPROFILE-ERROR'] = "Server error";
+          if ($initTotal >= 1) {
+            $sql = "UPDATE users SET full_name = '$fname', email_address = '$eaddress', birth_date = '$bdate', gender = '$gender', phone_number = '$pnumber' WHERE id = '$id'";
+            $con->query($sql) or die ($con->error);
+            echo header("Location: editprofile.php?id=".$id);
+            unset($_SESSION['EDITPROFILE-ERROR']);
+          } else {
+            $_SESSION['EDITPROFILE-ERROR'] = "Server error";
+          }
         }
       }
   } else {
     $_SESSION['EDITPROFILE-ERROR'] = "Invalid phone number";
   }
+  
 }
 
 if (isset($_POST['cancel'])) {
@@ -158,13 +167,13 @@ if (isset($_POST['cancel'])) {
               class="input-form" 
               name="fullname"
               style="width: 49%; margin-right: 1%; float: left; text-align: left;" 
-              value="<?php echo $row['full_name'];?>" required>
+              value="<?php echo ($initRow != null) ?  $initRow['full_name'] : $row['full_name']?>" required>
             <input
               type="text"
               class="input-form"
               name="emailaddress"
               style="width: 49%; margin-left: 1%; float: left; text-align: left"
-              value="<?php echo $row['email_address'];?>" required>
+              value="<?php echo ($initRow != null) ?  $initRow['email_address'] : $row['email_address']?>" required>
             <br/><br/>
             <label
               style="
@@ -190,12 +199,12 @@ if (isset($_POST['cancel'])) {
               id="birthdate"
               name="birthdate"
               style="width: 49%; margin-right: 1%; float: left; text-align: left;"
-              value="<?php echo $row['birth_date'];?>" required>
+              value="<?php echo ($initRow != null) ?  $initRow['birth_date'] : $row['birth_date']?>" required>
             <select
               class="dropdown-form"
               name="gender"
               style="width: 49%; margin-left: 1%; float: left; text-align: left">
-              <?php switch ($row['gender']):
+              <?php switch (($initRow != null) ?  $initRow['gender'] : $row['gender']):
                 case "Male": ?>
                     <option value="Male" selected>Male</option>
                     <option value="Female">Female</option>
@@ -237,7 +246,7 @@ if (isset($_POST['cancel'])) {
                 margin-right: 1%;
                 float: left;
                 text-align: left;"
-              value="<?php echo $row['phone_number'];?>" required>
+              value="<?php echo ($initRow != null) ?  $initRow['phone_number'] : $row['phone_number']?>" required>
             <br /><br /><br />
             <button type="submit" name="submit" value="submit" class="btn-submit" style="width: 49%; margin-right: 1%">
               Save</button
@@ -272,7 +281,7 @@ if (isset($_POST['cancel'])) {
               text-overflow: ellipsis;
             "
           >
-            <?php echo $row['full_name']; ?>
+            <?php echo ($initRow != null) ?  $initRow['full_name'] : $row['full_name']?>
           </label>
           <?php } ?>
 

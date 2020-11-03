@@ -50,13 +50,13 @@ if(isset($_POST['login'])){
 
 if(isset($_POST['signup'])){
 
-  $uname = $_POST['username'];
-  $pass = $_POST['password'];
-  $fname = $_POST['fullname'];
-  $eaddress = $_POST['emailaddress'];
-  $pnumber = $_POST['phonenumber'];
-  $bdate = $_POST['birthdate'];
-  $gender = $_POST['gender'];
+  $uname = trim($_POST['username']);
+  $pass = trim($_POST['password']);
+  $fname = trim($_POST['fullname']);
+  $eaddress = trim($_POST['emailaddress']);
+  $pnumber = trim($_POST['phonenumber']);
+  $bdate = trim($_POST['birthdate']);
+  $gender = trim($_POST['gender']);
 
   $result = "SELECT * FROM users WHERE username = '$uname' OR email_address = '$eaddress'";
   $user = $con->query($result) or die ($con->error);
