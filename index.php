@@ -13,10 +13,9 @@ $con = connection();
 // $products = $con->query($listSql) or die ($con->error);
 // $listRow = $products->fetch_assoc();
 
-$listSql = "SELECT * FROM products ORDER BY id DESC";
-$products = mysqli_query($con, $listSql);
-$productsResult = $con->query($listSql) or die ($con->error);
-$productRow = $productsResult->fetch_assoc();
+$gridSql = "SELECT * FROM products ORDER BY id DESC";
+$products = $con->query($gridSql) or die ($con->error);
+$productsRow = $products->fetch_assoc();
 
 if(isset($_SESSION['ID'])) {
   $id = $_SESSION['ID'];
@@ -102,20 +101,15 @@ if(isset($_POST['signup'])){
   <!--Start Modal-->
   <div class="modal" id="modal">
     <div class="modal-header">
-      <div class="title">
-      <?php if(isset($_SESSION['NAME'])){ ?>
-      <?php echo $_SESSION['NAME'];?>
-      <?php } ?>
-      </div>
+      <div class="title">Title</div>
       <button data-close-button class="close-button">&times;</button>
     </div>
-    <label><span>&#8369;</span>100</label>
+    <label><span>&#8369;</span>Price</label>
     <br>
     <div class="modal-body">
-      <img src="img/img1.jpg" alt="">
+    <img src="img/img1.jpg" alt="">
       <br>
-      <p>Shockproof TPU bumperBuilt-In Screen ProtectorRotatable Holster ClipRaised bezelsTexturized grip
-      ROTATABLE HOLSTER CLIPKeep your phone securely at arm's-length at all timesDROP PROTECTIONDual-layer design creates the industry's thinnest drop-proof case and winner of CNET's annual drop testEASY PORT ACCESSPrecise cutouts allow open access to portsGREAT FEELTexturized edges for enhanced grip</p>
+      <p>Description</p>
       <br>
       <button class="btn-submit">Add to Cart</button>
     </div>
@@ -192,7 +186,7 @@ if(isset($_POST['signup'])){
     <br>
 
     <!--Start Search-->
-    <div class="search-box" style="margin:auto; max-width:100%;">
+    <div class="search-box" style="margin:auto; max-width:90%;">
       <input type="text" placeholder="Search"/>
       <img src="img/search.png" alt="" style="margin-left: 0.9%;">
       <img src="img/cart.png" alt="" style="margin-left: 0.3%;">
@@ -374,59 +368,21 @@ if(isset($_POST['signup'])){
       </div>
     </div> -->
 
-    <?php
+    <div class="grid-container">
+      <?php do{ ?>
+      <div class="grid-item">
+        <a data-modal-target="#modal">
+        <?php echo '<img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 5px; display: block;" src="data:image/png;base64,'.base64_encode($productsRow['image']).'"/>'; ?>
+        <label style="font-size: 12px;"><?php echo $productsRow['name']; ?></label><br>
+        <label style="font-size: 20px;"><span>&#8369;</span><?php echo $productsRow['price']; ?></label>
+        </a>
+      </div>
+      <?php }while($productsRow = $products->fetch_assoc()) ?>
+    </div>
 
-    $max_columns = 4;
-
-    $data = [];
-    while($count = mysqli_fetch_array($products))
-    {
-        $data[] = $count;
-    }
-
-    ?>
-
-    <table style="table-layout: fixed; width: 100%;">
-    <?php
-        $record_id = 0;
-        while(true) // create rows until out of records to display
-        {
-            for ($column = 1; $column<=$max_columns; $column++){
-                //stop loop when there is no more data available
-                if (!isset($data[$record_id])) {
-                    return;
-                }
-
-                // if start of column, open <tr>
-                ?>
-
-                <?php do{ ?>
-                <?php if ($column == 1){ ?>
-                    <tr class="column-grid">
-                <?php } ?>
-
-                <td class="card-grid" data-modal-target="#modal">
-                <?php $_SESSION['NAME'] = $productRow['name'];?>
-                <?php echo '<img style="width: 100px; height: 100px;" src="data:image/png;base64,'.base64_encode($productRow['image']).'"/>'; ?>
-                <br>
-                <h3><?php echo $productRow['name']; ?></h3>
-                <p><span>&#8369;</span><?php echo $productRow['price']; ?></p>
-                </td>
-
-                <!--if column equals max columns, close table row-->
-                <?php if ($column == $max_columns){ ?>
-                    </tr>
-                <?php } ?>
-
-                <?php $record_id++; // next record ?>
-                <?php }while($productRow = $productsResult->fetch_assoc()) ?>
-          <?php } ?>
-        <?php } ?>
-    </table>
-
-    <br>
+    <!-- <br> -->
     <!--Start Pagination-->
-    <div class="pagination-center">
+    <!-- <div class="pagination-center">
       <div class="pagination">
       <a href="#">&laquo;</a>
       <a href="#">1</a>
@@ -437,7 +393,7 @@ if(isset($_POST['signup'])){
       <a href="#">6</a>
       <a href="#">&raquo;</a>
       </div>
-    </div>
+    </div> -->
     <!--End Pagination-->
     </div>
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
