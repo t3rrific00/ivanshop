@@ -350,6 +350,7 @@ if(isset($_POST['signup'])){
       </div>
     </div> -->
 
+    <?php if($productsRow != null) { ?>
     <div class="grid-container">
       <?php do{ ?>
       <div class="grid-item">
@@ -362,6 +363,7 @@ if(isset($_POST['signup'])){
       </div>
       <?php }while($productsRow = $products->fetch_assoc()) ?>
     </div>
+    <?php } ?>
 
     <!-- <br> -->
     <!--Start Pagination-->
