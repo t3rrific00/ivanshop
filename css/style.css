@@ -18,7 +18,8 @@
 }
 
 body,
-label {
+label,
+pre {
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -802,7 +803,40 @@ input[type="radio"]:checked:before {
 
 /** GRID VIEW **/
 
-/** End Date Picker **/
+/** PRODUCT DETAILS **/
+
+.content-top img {
+  height: 320px;
+  width: 320px;
+  float: left;
+}
+
+.content-right {
+  padding: 0px 20px 0 20px;
+  overflow: hidden;
+}
+
+.content-right h2 {
+  color: #0f5298;
+  margin-bottom: 20px;
+}
+
+.content-top {
+  padding: 0 20px 20px 20px;
+  overflow: hidden;
+}
+
+.content-bottom {
+  padding: 0 20px 0 20px;
+  text-align: left;
+}
+
+.content-bottom pre {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/** PRODUCT DETAILS **/
 
 @media (max-width: 600px) {
   .container {
@@ -815,4 +849,16 @@ input[type="radio"]:checked:before {
     display: block;
     margin-bottom: 20px;
   }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

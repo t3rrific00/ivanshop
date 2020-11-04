@@ -66,7 +66,7 @@ if(isset($_POST['signup'])){
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
 
-  if (strlen(trim($pass)) < 4) {
+  if (strlen($pass) < 4) {
     $_SESSION['SIGNUP-ERROR'] = "Password must be at least 4 characters";
   } else {
     if(is_numeric($pnumber)) {
@@ -356,9 +356,9 @@ if(isset($_POST['signup'])){
       <div class="grid-item">
         <a href="details.php?id=<?php echo $productsRow['id'];?>">
         <?php echo '<img style="width: 100%; height: 200px; margin-bottom: 5px;" src="data:image/png;base64,'.base64_encode($productsRow['image']).'"/>'; ?>
+        </a>
         <label class="ellipsis"><?php echo $productsRow['name']; ?></label>
         <label style="font-size: 20px; margin-bottom: 10px; display:block;"><span>&#8369;</span><?php echo $productsRow['price']; ?></label>
-        </a>
         <button type="submit" name="add-to-cart" class="btn-submit">Add to Cart</button>
       </div>
       <?php }while($productsRow = $products->fetch_assoc()) ?>

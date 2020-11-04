@@ -63,7 +63,7 @@ if(isset($_POST['signup'])){
   $row = $user->fetch_assoc();
   $total = $user->num_rows;
 
-  if (strlen(trim($pass)) < 4) {
+  if (strlen($pass) < 4) {
     $_SESSION['SIGNUP-ERROR'] = "Password must be at least 4 characters";
   } else {
     if(is_numeric($pnumber)) {
@@ -93,6 +93,23 @@ if(isset($_POST['signup'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bridge.js"></script>
 </head>
+<script>
+    function increment() {
+       document.getElementById('quantity-input').stepUp();
+    }
+    function decrement() {
+       document.getElementById('quantity-input').stepDown();
+    }
+    $(document).ready(function () {
+    $('#quantity-input').keyup(function (e) {
+    text = e.target.value;
+    textLength = e.target.value.length;
+    if (textLength > 2 || text > 59) {
+        $('#quantity-input').val("59");
+    }
+    });
+    });
+</script>
 <body>
 
   <div id="overlay"></div>
@@ -125,14 +142,33 @@ if(isset($_POST['signup'])){
         </div>
     </div>
     <div class="column middle" style="background-color:#fff; padding-top: 10px; margin: 10px 0;">
-   
-    <?php if($detailsRow != null) { ?>
-    <!--Start Here-->
-    <?php echo '<img style="width: 200px; height: 200px; margin-left: auto; margin-right: auto; margin-bottom: 5px; display: block;" src="data:image/png;base64,'.base64_encode($detailsRow['image']).'"/>'; ?>
-    <label style="font-size: 12px;"><?php echo $detailsRow['name']; ?></label><br>
-    <label style="font-size: 20px;"><span>&#8369;</span><?php echo $detailsRow['price']; ?></label>
-    <?php } ?>
 
+    <?php if($detailsRow != null) { ?>
+    <div class="content-top">
+        <?php echo '<img src="data:image/png;base64,'.base64_encode($detailsRow['image']).'"/>'; ?>
+        <!-- <img src="img/sample.webp"> -->
+        <div class="content-right">
+            <h2><?php echo $detailsRow['name']; ?></h2>
+            <label style="font-size: 30px; font-weight: bold;"><span>&#8369;</span><?php echo $detailsRow['price']; ?></label><br><br>
+            <div id="btnQty">
+            <button class="btn-submit" style="width: 30px; height: 30px; text-align: center;" onclick="decrement()">-</button>
+            <input class="input-form" style="width: 50px; height: 30px; text-align: center;" id="quantity-input" type="number" value="1" maxlength="2" min="1" max="59" pattern="[0-9]" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+            <button class="btn-submit" style="width: 30px; height: 30px; text-align: center;" onclick="increment()">+</button>
+            <label style="margin-left: 10px; text-align: center;">Sold: 5</label>
+            <label style="margin-left: 10px; text-align: center;">In Stock: 10</label>
+            </div>
+            <div id="btnOrder">
+                <button class="btn-submit" style="width: 150px; height: 40px; text-align: center;">Add To Cart</button>
+                <button class="btn-submit" style="width: 150px; height: 40px; text-align: center;">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    
+    <div class="content-bottom">
+    <h3 style="margin-bottom: 10px;">PRODUCT DETAIL:</h3>
+    <pre><?php echo $detailsRow['description']; ?></pre>
+    </div>
 
     </div>
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
@@ -233,22 +269,5 @@ if(isset($_POST['signup'])){
     </div>
     </div>
   </div>
-  <div>
-    <button onclick="topFunction()" class="fix-btn">Back to Top</button>
-    <div class="row-soc">
-      <div class="column-soc">
-        <a href="https://www.facebook.com" target="_blank"><img class="fix-img" src="img/facebook.webp"></a>
-      </div>
-      <div class="column-soc">
-        <a href="https://www.twitter.com" target="_blank"><img class="fix-img" src="img/twitter.webp"></a>
-      </div>
-      <div class="column-soc">
-        <a href="https://www.instagram.com" target="_blank"><img class="fix-img" src="img/instagram.webp"></a>
-      </div>
-    </div>
-  </div>
-    <footer id="main-footer">
-      <p>Copyright &copy; 2020 IvanShop.com</p>
-    </footer>
 </body>
 </html>
