@@ -167,7 +167,7 @@ if(isset($_POST['signup'])){
     
     <div class="content-bottom">
     <h3 style="margin-bottom: 10px;">PRODUCT DETAIL:</h3>
-    <pre><?php echo $detailsRow['description']; ?></pre>
+    <pre style="white-space: pre-line; line-height: 2.0;"><?php echo $detailsRow['description']; ?></pre>
     </div>
 
     </div>
