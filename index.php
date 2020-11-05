@@ -170,8 +170,8 @@ if(isset($_POST['signup'])){
     <!--Start Search-->
     <form action="result.php" method="get" class="search-box" style="margin:auto; max-width:90%;">
       <input type="text" name="search" id="search" placeholder="Search"/>
-      <button type="submit" style="padding: 0; border: none; margin-left: 4px;"><img src="img/search.png" style="width: 32px; height: 32px;"></button>
-      <button type="submit" style="padding: 0; border: none; margin-left: 0px;"><img src="img/cart.png" style="width: 32px; height: 32px;"></button>
+      <button type="submit" name="search" id="search" style="padding: 0; border: none; margin-left: 4px;"><img src="img/search.png" style="width: 32px; height: 32px;"></button>
+      <button type="submit" name="cart" id="cart" style="padding: 0; border: none; margin-left: 0px;"><img src="img/cart.png" style="width: 32px; height: 32px;"></button>
     </form>
     <!--End Search-->
 
