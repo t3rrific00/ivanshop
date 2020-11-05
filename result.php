@@ -168,11 +168,11 @@ if(isset($_POST['signup'])){
     <br>
 
     <!--Start Search-->
-    <form action="result.php" method="get" class="search-box" style="margin:auto; max-width:90%;">
-      <input type="text" name="search" id="search" placeholder="Search"/>
-      <button type="submit" style="padding: 0; border: none; margin-left: 4px;"><img src="img/search.png" style="width: 32px; height: 32px;"></button>
-      <button type="submit" style="padding: 0; border: none; margin-left: 0px;"><img src="img/cart.png" style="width: 32px; height: 32px;"></button>
-    </form>
+    <div class="search-box" style="margin:auto; max-width:90%;">
+      <input type="text" placeholder="Search"/>
+      <img src="img/search.png" alt="" style="margin-left: 0.9%;">
+      <img src="img/cart.png" alt="" style="margin-left: 0.3%;">
+    </div>
     <!--End Search-->
 
     <!-- <div class="row-grid">
