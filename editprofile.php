@@ -313,7 +313,7 @@ if (isset($_POST['cancel'])) {
                       >
                     </li>
                     <li style="padding-left: 40px; font-size: 12px">
-                      <a href="changepassword.html"
+                      <a href="changepassword.php"
                         ><i class="fas fa-home"></i>Change Password</a
                       >
                     </li>

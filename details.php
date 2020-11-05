@@ -269,5 +269,6 @@ if(isset($_POST['signup'])){
     </div>
     </div>
   </div>
+  <div>
 </body>
 </html>

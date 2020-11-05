@@ -8,12 +8,13 @@ if (!isset($_SESSION)) {
 
 include_once("connections/connection.php");
 $con = connection();
+$search = $_GET['search'];
 
 // $listSql = "SELECT * FROM products ORDER BY id DESC";
 // $products = $con->query($listSql) or die ($con->error);
 // $listRow = $products->fetch_assoc();
 
-$gridSql = "SELECT * FROM products ORDER BY id DESC";
+$gridSql = "SELECT * FROM products WHERE name LIKE '%$search%' ORDER BY id DESC";
 $products = $con->query($gridSql) or die ($con->error);
 $productsRow = $products->fetch_assoc();
 
@@ -43,7 +44,7 @@ if(isset($_POST['login'])){
   if ($total > 0) {
     $_SESSION['ID'] = $row['id'];
     $_SESSION['FULLNAME'] = $row['full_name'];
-    echo header("Location: index.php");
+    echo header("Location: result.php");
     unset($_SESSION['LOGIN-ERROR']);
   } else {
     $_SESSION['LOGIN-ERROR'] = "User not found";
@@ -75,7 +76,7 @@ if(isset($_POST['signup'])){
       } else {
         $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
         $con->query($sql) or die ($con->error);
-        echo header("Location: index.php");
+        echo header("Location: result.php");
         unset($_SESSION['SIGNUP-ERROR']);
       }
     } else {
@@ -128,227 +129,14 @@ if(isset($_POST['signup'])){
       </div>
       </div>
       <div class="column middle" style="background-color:#fff; padding-top: 10px; margin: 10px 0;">
-        <!--image slider start-->
-        <div class="slider">
-        <div class="slides">
-          <!--radio buttons start-->
-          <input type="radio" name="radio-btn" id="radio1">
-          <input type="radio" name="radio-btn" id="radio2">
-          <input type="radio" name="radio-btn" id="radio3">
-          <!--radio buttons end-->
-        <!--slide images start-->
-        <div class="slide first">
-          <img src="img/img1.jpg" alt="">
-        </div>
-        <div class="slide">
-          <img src="img/img2.jpg" alt="">
-        </div>
-        <div class="slide">
-          <img src="img/img3.jpg" alt="">
-        </div>
-        <!--slide images end-->
-        <!--automatic navigation start-->
-        <div class="navigation-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-        </div>
-        <!--automatic navigation end-->
-      </div>
-      <!--manual navigation start-->
-      <div class="navigation-manual">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-      </div>
-      <!--manual navigation end-->
-      </div>
-    <!--image slider end-->
-
-    <br>
 
     <!--Start Search-->
-    <div class="search-box" style="margin:auto; max-width:90%;">
-      <input type="text" placeholder="Search"/>
-      <img src="img/search.png" alt="" style="margin-left: 0.9%;">
-      <img src="img/cart.png" alt="" style="margin-left: 0.3%;">
-    </div>
+    <form action="result.php" method="get" class="search-box" style="margin:auto; max-width:90%;">
+      <input type="text" name="search" id="search" placeholder="Search"/>
+      <button type="submit" style="padding: 0; border: none; margin-left: 4px;"><img src="img/search.png" style="width: 32px; height: 32px;"></button>
+      <button type="submit" name="cart" id="cart" style="padding: 0; border: none; margin-left: 0px;"><img src="img/cart.png" style="width: 32px; height: 32px;"></button>
+    </form>
     <!--End Search-->
-
-    <!-- <div class="row-grid">
-      <div data-modal-target="#modal" class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row-grid">
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row-grid">
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row-grid">
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row-grid">
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-      <div class="column-grid">
-        <div class="card-grid">
-          <img src="img/img1.jpg" alt="">
-          <br>
-          <h3>SUPCASE UBPro for Google Pixel 3aXL Case Full-Body Rugged Case with Screen Protector & Holster Clip</h3>
-          <p><span>&#8369;</span>100</p>
-        </div>
-      </div>
-    </div> -->
 
     <?php if($productsRow != null) { ?>
     <div class="grid-container">
@@ -479,22 +267,5 @@ if(isset($_POST['signup'])){
     </div>
     </div>
   </div>
-  <div>
-    <button onclick="topFunction()" class="fix-btn">Back to Top</button>
-    <div class="row-soc">
-      <div class="column-soc">
-        <a href="https://www.facebook.com" target="_blank"><img class="fix-img" src="img/facebook.webp"></a>
-      </div>
-      <div class="column-soc">
-        <a href="https://www.twitter.com" target="_blank"><img class="fix-img" src="img/twitter.webp"></a>
-      </div>
-      <div class="column-soc">
-        <a href="https://www.instagram.com" target="_blank"><img class="fix-img" src="img/instagram.webp"></a>
-      </div>
-    </div>
-  </div>
-    <footer id="main-footer">
-      <p>Copyright &copy; 2020 IvanShop.com</p>
-    </footer>
 </body>
 </html>
