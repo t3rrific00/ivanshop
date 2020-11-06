@@ -266,6 +266,14 @@ pre {
   color: #2565ae;
 }
 
+.sidebar-category:hover {
+  color: #2565ae;
+}
+
+.sidebar-category {
+  color: #fff;
+}
+
 /** End Sidebar Left **/
 
 /** Start Sidebar Right **/

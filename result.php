@@ -10,13 +10,17 @@ include_once("connections/connection.php");
 $con = connection();
 $search = $_GET['search'];
 
-// $listSql = "SELECT * FROM products ORDER BY id DESC";
-// $products = $con->query($listSql) or die ($con->error);
-// $listRow = $products->fetch_assoc();
-
 $gridSql = "SELECT * FROM products WHERE name LIKE '%$search%' ORDER BY id DESC";
 $products = $con->query($gridSql) or die ($con->error);
 $productsRow = $products->fetch_assoc();
+
+if(isset($_GET['category'])) {
+  $category = $_GET['category'];
+
+  $gridSql = "SELECT * FROM products WHERE category LIKE '$category' ORDER BY id DESC";
+  $products = $con->query($gridSql) or die ($con->error);
+  $productsRow = $products->fetch_assoc();
+}
 
 if(isset($_SESSION['ID'])) {
   $id = $_SESSION['ID'];
@@ -117,17 +121,49 @@ if(isset($_POST['signup'])){
         <div class="wrapper-sidebar-left">
           <div class="sidebar">
               <ul>
-              <?php if($search == "") { ?>
+                
+              <?php if($search == "" && !isset($_GET['category'])) { ?>
                 <li style="background: #d5f3fe;"><a style="color: #2565ae;" href="result.php?search="><i class="fas fa-home"></i>All</a></li>
               <?php } else { ?>
                 <li><a href="result.php?search="><i class="fas fa-home"></i>All</a></li>
               <?php } ?>
-                  <li><a href="#"><i class="fas fa-home"></i>Mobiles</a></li>
-                  <li><a href="#"><i class="fas fa-user"></i>Accessories</a></li>
-                  <li><a href="#"><i class="fas fa-address-card"></i>Portable Audio</a></li>
-                  <li><a href="#"><i class="fas fa-project-diagram"></i>Chargers</a></li>
-                  <li><a href="#"><i class="fas fa-blog"></i>Tablets</a></li>
-                  <li><a href="#"><i class="fas fa-address-book"></i>Wearables</a></li>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Mobiles") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
+              <?php } ?>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Accessories") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Accessories"><i class="fas fa-home"></i>Accessories</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Accessories"><i class="fas fa-home"></i>Accessories</a></li>
+              <?php } ?>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Portable Audio") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Portable+Audio"><i class="fas fa-home"></i>Portable Audio</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Portable+Audio"><i class="fas fa-home"></i>Portable Audio</a></li>
+              <?php } ?>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Chargers") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Chargers"><i class="fas fa-home"></i>Chargers</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Chargers"><i class="fas fa-home"></i>Chargers</a></li>
+              <?php } ?>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Tablets") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Tablets"><i class="fas fa-home"></i>Tablets</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Tablets"><i class="fas fa-home"></i>Tablets</a></li>
+              <?php } ?>
+
+              <?php if($search == "" && isset($_GET['category']) && $category == "Wearables") { ?>
+                <li style="background: #d5f3fe; color: #2565ae;"><a style="color: #2565ae;" href="result.php?search=&category=Wearables"><i class="fas fa-home"></i>Wearables</a></li>
+              <?php } else { ?>
+                <li><a href="result.php?search=&category=Wearables"><i class="fas fa-home"></i>Wearables</a></li>
+              <?php } ?>
+
               </ul> 
           </div>
       </div>
