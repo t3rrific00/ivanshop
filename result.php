@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
   if ($total > 0) {
     $_SESSION['ID'] = $row['id'];
     $_SESSION['FULLNAME'] = $row['full_name'];
-    echo header("Location: result.php");
+    echo header("Location: result.php?search=$search");
     unset($_SESSION['LOGIN-ERROR']);
   } else {
     $_SESSION['LOGIN-ERROR'] = "User not found";
@@ -76,7 +76,7 @@ if(isset($_POST['signup'])){
       } else {
         $sql = "INSERT INTO `users`(`username`, `password`, `full_name`, `email_address`, `phone_number`, `birth_date`, `gender`) VALUES ('$uname', '$pass', '$fname', '$eaddress', '$pnumber', '$bdate', '$gender')";
         $con->query($sql) or die ($con->error);
-        echo header("Location: result.php");
+        echo header("Location: result.php?search=$search");
         unset($_SESSION['SIGNUP-ERROR']);
       }
     } else {
@@ -132,7 +132,7 @@ if(isset($_POST['signup'])){
 
     <!--Start Search-->
     <form action="result.php" method="get" class="search-box" style="margin:auto; max-width:90%;">
-      <input type="text" name="search" id="search" placeholder="Search"/>
+      <input type="text" name="search" id="search" value="<?php echo $search; ?>" placeholder="Search"/>
       <button type="submit" style="padding: 0; border: none; margin-left: 4px;"><img src="img/search.png" style="width: 32px; height: 32px;"></button>
       <button type="submit" name="cart" id="cart" style="padding: 0; border: none; margin-left: 0px;"><img src="img/cart.png" style="width: 32px; height: 32px;"></button>
     </form>
