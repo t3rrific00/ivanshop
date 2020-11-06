@@ -102,7 +102,7 @@ if(isset($_POST['signup'])){
     <div class="header">
         <div class="container">
             <div class="logo-container">
-              <h1><a href="#"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
+              <h1><a href="index.php"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
             </div>
             <ul class="navigation">
                 <a href="aboutus.html"><li>About Us</li></a>
@@ -116,13 +116,13 @@ if(isset($_POST['signup'])){
         <div class="wrapper-sidebar-left">
           <div class="sidebar">
               <ul>
-                  <li><a href="#"><i class="fas fa-home"></i>All</a></li>
-                  <li><a href="#"><i class="fas fa-home"></i>Mobiles</a></li>
-                  <li><a href="#"><i class="fas fa-user"></i>Accessories</a></li>
-                  <li><a href="#"><i class="fas fa-address-card"></i>Portable Audio</a></li>
-                  <li><a href="#"><i class="fas fa-project-diagram"></i>Chargers</a></li>
-                  <li><a href="#"><i class="fas fa-blog"></i>Tablets</a></li>
-                  <li><a href="#"><i class="fas fa-address-book"></i>Wearables</a></li>
+              <li style="background: #d5f3fe;"><a style="color: #2565ae;" href="index.php"><i class="fas fa-home"></i>All</a></li>
+                  <li><a href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
+                  <li><a href="result.php?search=&category=Accessories"><i class="fas fa-user"></i>Accessories</a></li>
+                  <li><a href="result.php?search=&category=Portable+Audio"><i class="fas fa-address-card"></i>Portable Audio</a></li>
+                  <li><a href="result.php?search=&category=Chargers"><i class="fas fa-project-diagram"></i>Chargers</a></li>
+                  <li><a href="result.php?search=&category=Tablets"><i class="fas fa-blog"></i>Tablets</a></li>
+                  <li><a href="result.php?search=&category=Wearables"><i class="fas fa-address-book"></i>Wearables</a></li>
               </ul> 
           </div>
       </div>

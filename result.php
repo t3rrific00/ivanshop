@@ -107,7 +107,7 @@ if(isset($_POST['signup'])){
     <div class="header">
         <div class="container">
             <div class="logo-container">
-              <h1><a href="#"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
+              <h1><a href="index.php"><img src="img/logo.png" alt=""><span>IVAN</span>SHOP</a></h1>
             </div>
             <ul class="navigation">
                 <a href="aboutus.html"><li>About Us</li></a>
@@ -121,7 +121,7 @@ if(isset($_POST['signup'])){
         <div class="wrapper-sidebar-left">
           <div class="sidebar">
               <ul>
-                
+
               <?php if($search == "" && !isset($_GET['category'])) { ?>
                 <li style="background: #d5f3fe;"><a style="color: #2565ae;" href="result.php?search="><i class="fas fa-home"></i>All</a></li>
               <?php } else { ?>
