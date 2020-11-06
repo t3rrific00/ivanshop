@@ -116,7 +116,7 @@ if(isset($_POST['signup'])){
         <div class="wrapper-sidebar-left">
           <div class="sidebar">
               <ul>
-              <li style="background: #d5f3fe;"><a style="color: #2565ae;" href="index.php"><i class="fas fa-home"></i>All</a></li>
+                  <li><a href="result.php?search="><i class="fas fa-home"></i>All</a></li>
                   <li><a href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
                   <li><a href="result.php?search=&category=Accessories"><i class="fas fa-user"></i>Accessories</a></li>
                   <li><a href="result.php?search=&category=Portable+Audio"><i class="fas fa-address-card"></i>Portable Audio</a></li>
