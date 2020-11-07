@@ -319,7 +319,7 @@ if (isset($_POST['cancel'])) {
                     </li>
                   </ul>
                   <li style="padding-left: 20px; font-size: 14px">
-                    <a href="#"><i class="fas fa-home"></i>Address Book</a>
+                    <a href="addressbook.php"><i class="fas fa-home"></i>Address Book</a>
                   </li>
                 </ul>
                 <li>

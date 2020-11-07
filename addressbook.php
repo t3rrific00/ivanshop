@@ -88,20 +88,48 @@ if (isset($_POST['cancel'])) {
           </div>
       </div>
       </div>
-      <div class="column middle" style="background-color:#fff; padding-top: 10px;">
+      <div class="column middle" style="background-color: #fff; padding-top: 10px;">
         
-        <!--Start Change Password Form-->
-        <form class="middle-form" method="post">
-          <?php if(isset($_SESSION['CHANGEPASSWORD-ERROR'])){ ?>
-            <label style="color: #ff0000; font-size: 12px; height: 100%; width: 100%; margin-bottom: 10px; display:inline-block;"><?php echo $_SESSION['CHANGEPASSWORD-ERROR']; ?></label>
-          <?php } ?>
-          <label style="font-weight: bold; width: 49%; margin-right: 1%; float: left; text-align: left;">Current Password:</label><label style="font-weight: bold; width: 49%; margin-left: 1%; float: left; text-align: left;">New Password:</label><br><br>
-          <input type="password" class="input-form" name="currentpassword" style="width: 49%; margin-right: 1%; float: left; text-align: left;"><input type="password" class="input-form" name="newpassword" style="width: 49%; margin-left: 1%; float: left; text-align: left;"><br><br>
-          <label style="font-weight: bold; width: 49%; margin-right: 1%; float: left; text-align: left;">Confirm New Password:</label><br><br>
-          <input  type="password" class="input-form" name="confirmnewpassword" style="width: 49%; margin-right: 1%; float: left; text-align: left;"><br><br><br>
-          <button type="submit" name="save" value="submit" class="btn-submit" style="width: 49%; margin-right: 1%;">Save</button><button type="submit" name="cancel" value="cancel" class="btn-submit" style="width: 49%; margin-left: 1%;">Cancel</button>
-        </form>
-        <!--End Change Password Form-->
+        <!--Start Here-->
+
+      <div class="table-container">
+        <div class="table-item">
+        <table>
+        <tr>
+          <th style="width: 100px;">Full name</th>
+          <th style="width: 200px;">Address</th> 
+          <th style="width: 150px;">Postcode</th>
+          <th style="width: 120px;">Mobile Number</th>
+          <th style="width: 50px;">Default</th>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Niel Picson Sauro</td>
+          <td>Office - Blk 2 Lot 1 Salanap Compound Sitio Mendez Brgy Baesa Quezon City</td>
+          <td>Quezon City, Metro Manila, Philippines</td>
+          <td>0999-999-9999</td>
+          <td>Yes</td>
+          <td>Edit</td>
+        </tr>
+        <tr>
+          <td>Niel Picson Sauro</td>
+          <td>Office - Blk 2 Lot 1 Salanap Compound Sitio Mendez Brgy Baesa Quezon City</td>
+          <td>Quezon City, Metro Manila, Philippines</td>
+          <td>0999-999-9999</td>
+          <td>Yes</td>
+          <td>Edit</td>
+        </tr>
+        <tr>
+          <td>Niel Picson Sauro</td>
+          <td>Office - Blk 2 Lot 1 Salanap Compound Sitio Mendez Brgy Baesa Quezon City</td>
+          <td>Quezon City, Metro Manila, Philippines</td>
+          <td>0999-999-9999</td>
+          <td>Yes</td>
+          <td>Edit</td>
+        </tr>
+        </table>
+        </div>
+      </div>
 
     </div>
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
@@ -138,9 +166,9 @@ if (isset($_POST['cancel'])) {
                     <li style="padding-left: 20px; font-size: 14px;"><a href="myprofile.php"><i class="fas fa-home"></i>My Profile</a></li>
                       <ul>
                         <li style="padding-left: 40px; font-size: 12px;"><a href="editprofile.php"><i class="fas fa-home"></i>Edit Profile</a></li>
-                        <li style="padding-left: 40px; font-size: 12px; background-color: #66d3fa;"><a href="changepassword.php" style="color: #242424;"><i class="fas fa-home"></i>Change Password</a></li>
+                        <li style="padding-left: 40px; font-size: 12px;"><a href="changepassword.php"><i class="fas fa-home"></i>Change Password</a></li>
                       </ul>
-                    <li style="padding-left: 20px; font-size: 14px;"><a href="addressbook.php"><i class="fas fa-home"></i>Address Book</a></li>
+                    <li style="padding-left: 20px; font-size: 14px; background-color: #66d3fa;"><a href="addressbook.php" style="color: #242424;"><i class="fas fa-home"></i>Address Book</a></li>
                   </ul>
                 <li><a href="#"><i class="fas fa-home"></i>My Orders</a></li>
                 <!-- <ul> Returns &d Cancellation

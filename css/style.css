@@ -796,6 +796,32 @@ input[type="radio"]:checked:before {
 
 /** PRODUCT DETAILS **/
 
+/** ADDRESS BOOK **/
+
+.table-container {
+  display: table;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  background: #2565ae;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-item tr {
+  padding: 20px;
+}
+
+.table-item th,
+td {
+  padding: 5px 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+/** ADDRESS BOOK **/
+
 @media (max-width: 600px) {
   .container {
     width: 100%;

@@ -129,15 +129,15 @@ if(isset($_POST['signup'])){
     <div class="column left" style="background-color:#2565ae; padding-top: 0px; margin: 10px 0;">
         <div class="wrapper-sidebar-left">
           <div class="sidebar">
-          <ul>
-                  <li><a href="result.php?search="><i class="fas fa-home"></i>All</a></li>
-                  <li><a href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
-                  <li><a href="result.php?search=&category=Accessories"><i class="fas fa-user"></i>Accessories</a></li>
-                  <li><a href="result.php?search=&category=Portable+Audio"><i class="fas fa-address-card"></i>Portable Audio</a></li>
-                  <li><a href="result.php?search=&category=Chargers"><i class="fas fa-project-diagram"></i>Chargers</a></li>
-                  <li><a href="result.php?search=&category=Tablets"><i class="fas fa-blog"></i>Tablets</a></li>
-                  <li><a href="result.php?search=&category=Wearables"><i class="fas fa-address-book"></i>Wearables</a></li>
-              </ul> 
+            <ul>
+              <li><a href="result.php?search="><i class="fas fa-home"></i>All</a></li>
+              <li><a href="result.php?search=&category=Mobiles"><i class="fas fa-home"></i>Mobiles</a></li>
+              <li><a href="result.php?search=&category=Accessories"><i class="fas fa-user"></i>Accessories</a></li>
+              <li><a href="result.php?search=&category=Portable+Audio"><i class="fas fa-address-card"></i>Portable Audio</a></li>
+              <li><a href="result.php?search=&category=Chargers"><i class="fas fa-project-diagram"></i>Chargers</a></li>
+              <li><a href="result.php?search=&category=Tablets"><i class="fas fa-blog"></i>Tablets</a></li>
+              <li><a href="result.php?search=&category=Wearables"><i class="fas fa-address-book"></i>Wearables</a></li>
+            </ul> 
           </div>
         </div>
     </div>
