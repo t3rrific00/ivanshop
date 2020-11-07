@@ -134,6 +134,7 @@ if (isset($_POST['cancel'])) {
         </table>
         </div>
       </div>
+      <button type="submit" name="add-new-address" class="btn-submit" style="width: 180px; margin-top: 10px; margin-left: auto; margin-right: auto; float: right;">+ Add New Address</button>
 
     </div>
     <div class="column right" style="background-color:#d5f3fe; padding-top: 10px; margin: 10px 0;">
