@@ -102,6 +102,7 @@ if (isset($_POST['cancel'])) {
           <th style="width: 120px;">Mobile Number</th>
           <th style="width: 50px;">Default</th>
           <td></td>
+          <td></td>
         </tr>
         <tr>
           <td>Niel Picson Sauro</td>
@@ -110,22 +111,25 @@ if (isset($_POST['cancel'])) {
           <td>0999-999-9999</td>
           <td>Yes</td>
           <td>Edit</td>
+          <td>Delete</td>
         </tr>
         <tr>
           <td>Niel Picson Sauro</td>
           <td>Office - Blk 2 Lot 1 Salanap Compound Sitio Mendez Brgy Baesa Quezon City</td>
           <td>Quezon City, Metro Manila, Philippines</td>
           <td>0999-999-9999</td>
-          <td>Yes</td>
+          <td>No</td>
           <td>Edit</td>
+          <td>Delete</td>
         </tr>
         <tr>
           <td>Niel Picson Sauro</td>
           <td>Office - Blk 2 Lot 1 Salanap Compound Sitio Mendez Brgy Baesa Quezon City</td>
           <td>Quezon City, Metro Manila, Philippines</td>
           <td>0999-999-9999</td>
-          <td>Yes</td>
+          <td>No</td>
           <td>Edit</td>
+          <td>Delete</td>
         </tr>
         </table>
         </div>
